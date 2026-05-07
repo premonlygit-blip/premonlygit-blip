@@ -1,0 +1,1284 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Premonly - Premium YouTube Channel Solutions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+      --font-serif: "Instrument Serif", serif;
+      --color-brand-dark: #f8f8f8;
+      --color-card-bg: #ffffff;
+    }
+
+    body {
+      background-color: var(--color-brand-dark);
+      color: #000;
+      font-family: var(--font-sans);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection { background-color: rgba(168,85,247,0.3); }
+
+    h1, h2, h3 { letter-spacing: -0.02em; font-weight: 500; color: #000; }
+
+    .italic-serif { font-family: var(--font-serif); font-style: italic; font-weight: 400; }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      pointer-events: none;
+      opacity: 0.02;
+      mix-blend-mode: multiply;
+      background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+    }
+
+    .min-h-screen { min-height: 100vh; }
+    .selection-purple::selection { background-color: rgba(168,85,247,0.3); }
+
+    nav.premonly-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+      background: rgba(0,0,0,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .nav-inner {
+      max-width: 80rem; margin: 0 auto; padding: 0 1.5rem;
+      height: 4rem; display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 0.5rem; }
+    .nav-logo-icon {
+      width: 2rem; height: 2rem; background: #fff; border-radius: 0.5rem;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .nav-logo-text { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.02em; color: #fff; }
+    .nav-links { display: none; align-items: center; gap: 2rem; }
+    @media (min-width: 768px) { .nav-links { display: flex; } .nav-mobile-btn { display: none !important; } .nav-desktop-cta { display: none !important; } }
+    .nav-link { font-size: 0.875rem; color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.2s; }
+    @media (min-width: 768px) { .nav-link { font-size: 0.9375rem; } }
+    .nav-link:hover { color: #fff; }
+    .nav-desktop-cta { display: none; }
+    .nav-mobile-btn { background: none; border: none; cursor: pointer; color: #fff; display: flex; }
+    .mobile-menu {
+      display: flex; flex-direction: column; gap: 1rem;
+      background: #0a0a0a; border-bottom: 1px solid rgba(255,255,255,0.08); padding: 1.5rem;
+      animation: slideDown 0.2s ease;
+    }
+    @keyframes slideDown { from { opacity:0; transform:translateY(-10px); } to { opacity:1; transform:translateY(0); } }
+    @media (min-width: 768px) { .mobile-menu { display: none !important; } }
+    .mobile-menu a { font-size: 1.125rem; color: rgba(255,255,255,0.55); text-decoration: none; }
+    .mobile-menu a:hover { color: #fff; }
+
+    .btn {
+      padding: 0.625rem 1.5rem;
+      border-radius: 9999px;
+      font-weight: 500;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      cursor: pointer;
+      border: none;
+      font-family: var(--font-sans);
+      text-decoration: none;
+    }
+    .btn-primary { background: #000; color: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    .btn-primary:hover { background: #27272a; }
+    .btn-discord {
+      background: linear-gradient(160deg, #7289f7 0%, #5865f2 45%, #4752c4 100%);
+      color: #fff;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 0.875rem;
+      box-shadow:
+        0 0 0 1px rgba(88,101,242,0.4),
+        0 4px 16px rgba(88,101,242,0.5),
+        0 8px 32px rgba(88,101,242,0.3),
+        inset 0 1px 0 rgba(255,255,255,0.22);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    }
+    .btn-discord::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 45%;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.14), rgba(255,255,255,0));
+      border-radius: 9999px 9999px 0 0;
+      pointer-events: none;
+    }
+    .btn-discord:hover {
+      transform: translateY(-2px);
+      box-shadow:
+        0 0 0 1px rgba(88,101,242,0.5),
+        0 6px 24px rgba(88,101,242,0.65),
+        0 12px 48px rgba(88,101,242,0.4),
+        inset 0 1px 0 rgba(255,255,255,0.25);
+      background: linear-gradient(160deg, #8296ff 0%, #6475f5 45%, #5562d4 100%);
+    }
+    .btn-discord:active { transform: translateY(0); }
+    .btn-secondary { background: #fff; color: #000; border: 1px solid #e4e4e7; }
+    .btn-secondary:hover { background: #fafafa; }
+    .btn-ghost { background: none; color: #71717a; }
+    .btn-ghost:hover { color: #000; }
+
+    #home {
+      padding-top: 10rem; padding-bottom: 6rem; padding-left: 1.5rem; padding-right: 1.5rem;
+      overflow: hidden; background: var(--color-brand-dark);
+    }
+    .hero-inner { max-width: 80rem; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 5rem; }
+    @media (min-width: 1024px) { .hero-inner { flex-direction: row; } }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.25rem 1rem;
+      background: #fff; border: 1px solid #e4e4e7; border-radius: 9999px;
+      font-size: 0.625rem; text-transform: uppercase; letter-spacing: 0.2em; color: #71717a; font-weight: 700;
+      margin-bottom: 2rem;
+    }
+    .badge-dot { width: 0.375rem; height: 0.375rem; background: #000; border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.5;} }
+    .hero-h1 { font-size: clamp(2.5rem, 6vw, 5.5rem); font-weight: 500; line-height: 0.95; margin-bottom: 2rem; color: #000; }
+    .hero-sub { color: #71717a; font-size: 1.125rem; line-height: 1.7; margin-bottom: 2rem; max-width: 36rem; }
+    .hero-btns { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 3rem; }
+    @media (min-width: 640px) { .hero-btns { flex-direction: row; align-items: center; } }
+    .hero-badges-row { display: grid; grid-template-columns: 1fr; gap: 1.5rem; font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.15em; color: #a1a1aa; }
+    @media (min-width: 640px) { .hero-badges-row { grid-template-columns: repeat(3, 1fr); } }
+    .hero-badge-item { display: flex; align-items: center; gap: 0.5rem; font-weight: 500; }
+    .hero-right { flex: 1; display: flex; justify-content: center; position: relative; }
+
+    .phone-mockup {
+      position: relative; width: 320px; aspect-ratio: 9/19;
+      background: #111; border-radius: 3rem; border: 8px solid #1a1a1a;
+      box-shadow: 0 40px 80px -12px rgba(0,0,0,0.45), 0 20px 40px -8px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.06);
+      overflow: hidden;
+    }
+    .phone-screen { height: 100%; position: relative; overflow: hidden; background: #000; }
+    .phone-notch { position: absolute; top: 0.5rem; left: 50%; transform: translateX(-50%); width: 5rem; height: 1.5rem; background: #111; border-radius: 9999px; z-index: 10; }
+
+    .phone-slide {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+      opacity: 0; transition: opacity 1.2s ease;
+      transform: scale(1.05);
+      animation: slideZoom 6s ease-in-out infinite;
+    }
+    .phone-slide.active { opacity: 1; }
+    @keyframes slideZoom {
+      0% { transform: scale(1.05); }
+      50% { transform: scale(1.0); }
+      100% { transform: scale(1.05); }
+    }
+    .phone-slide-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.2) 100%);
+      z-index: 2; pointer-events: none;
+    }
+    .phone-slide-dots {
+      position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+      display: flex; gap: 0.375rem; z-index: 5;
+    }
+    .phone-slide-dot {
+      width: 0.3rem; height: 0.3rem; border-radius: 9999px;
+      background: rgba(255,255,255,0.35); transition: all 0.4s ease;
+    }
+    .phone-slide-dot.active { background: rgba(255,255,255,0.9); width: 1.2rem; }
+
+    .testimonials-section { padding: 8rem 1.5rem; background: #fff; }
+    .section-inner { max-width: 80rem; margin: 0 auto; }
+    .vtc-wrap { max-width: 64rem; margin: 0 auto; }
+    .vtc-stage { position: relative; display: flex; align-items: center; gap: 1.25rem; }
+    .vtc-main {
+      flex: 1; position: relative; aspect-ratio: 16/9;
+      background: #0a0a0a; border-radius: 1.75rem; overflow: hidden;
+      box-shadow: 0 32px 64px -12px rgba(0,0,0,0.35), 0 0 0 1px rgba(0,0,0,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .vtc-slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transition: opacity 0.65s ease; }
+    .vtc-slide.active { opacity: 1; }
+    .vtc-overlay {
+      position: absolute; inset: 0; z-index: 2;
+      background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.08) 55%, transparent 100%);
+      pointer-events: none;
+    }
+    .vtc-info { position: absolute; bottom: 1.75rem; left: 1.75rem; right: 1.75rem; z-index: 4; color: #fff; display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; }
+    .vtc-name { font-weight: 700; font-size: 1.125rem; letter-spacing: -0.01em; line-height: 1.2; }
+    .vtc-role { font-size: 0.625rem; text-transform: uppercase; letter-spacing: 0.15em; color: rgba(255,255,255,0.6); margin-top: 0.25rem; }
+    .vtc-quote { font-size: 0.875rem; color: rgba(255,255,255,0.8); max-width: 26rem; line-height: 1.6; font-style: italic; font-family: var(--font-serif); }
+    .vtc-play {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      z-index: 4; width: 4.5rem; height: 4.5rem;
+      background: rgba(255,255,255,0.12); backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.2); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: all 0.3s ease;
+    }
+    .vtc-play:hover { background: rgba(255,255,255,0.2); transform: translate(-50%,-50%) scale(1.08); }
+    .vtc-stars { display: flex; gap: 0.2rem; margin-bottom: 0.35rem; }
+    .vtc-arrow {
+      flex-shrink: 0; width: 3rem; height: 3rem; border-radius: 50%;
+      background: #fff; border: 1px solid #e4e4e7;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: all 0.25s ease; color: #000;
+    }
+    .vtc-arrow:hover { background: #000; color: #fff; border-color: #000; transform: scale(1.08); box-shadow: 0 8px 24px rgba(0,0,0,0.18); }
+    @media (max-width: 639px) {
+      .testimonials-section { padding: 5rem 1rem; }
+      .vtc-wrap { max-width: 100%; }
+      .vtc-stage { flex-direction: column; gap: 0; align-items: stretch; }
+      .vtc-arrow { display: none; }
+      .vtc-main { border-radius: 1.25rem; aspect-ratio: 4/3; }
+      .vtc-info { flex-direction: column; align-items: flex-start; gap: 0.5rem; bottom: 1.25rem; left: 1.25rem; right: 1.25rem; }
+      .vtc-quote { font-size: 0.8125rem; max-width: 100%; }
+      .vtc-name { font-size: 1rem; }
+      .vtc-play { width: 3.5rem; height: 3.5rem; }
+      .vtc-thumbs { margin-top: 1.25rem; gap: 0.625rem; justify-content: flex-start; padding-left: 0.125rem; padding-bottom: 0.75rem; }
+      .vtc-thumb { width: 5.5rem; border-radius: 0.625rem; }
+      .vtc-thumb-label { font-size: 0.45rem; }
+      .vtc-thumb-num { font-size: 0.45rem; }
+      .vtc-arrow-row { display: flex !important; justify-content: center; gap: 1rem; margin-top: 1rem; }
+      .vtc-arrow-row .vtc-arrow { display: flex !important; width: 2.75rem; height: 2.75rem; }
+    }
+    .vtc-thumbs { margin-top: 1.5rem; display: flex; gap: 0.875rem; justify-content: center; overflow-x: auto; padding-bottom: 0.5rem; scrollbar-width: none; }
+    .vtc-thumbs::-webkit-scrollbar { display: none; }
+    .vtc-thumb { flex-shrink: 0; width: 7.5rem; aspect-ratio: 16/9; border-radius: 0.875rem; overflow: hidden; cursor: pointer; position: relative; border: 2px solid transparent; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.3s ease; background: #0a0a0a; }
+    .vtc-thumb.active { border-color: #000; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+    .vtc-thumb:hover:not(.active) { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.15); }
+    .vtc-thumb-img { width: 100%; height: 100%; background-size: cover; background-position: center; transition: transform 0.4s ease; }
+    .vtc-thumb:hover .vtc-thumb-img { transform: scale(1.05); }
+    .vtc-thumb-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0.05)); }
+    .vtc-thumb.active .vtc-thumb-overlay { background: rgba(0,0,0,0.15); }
+    .vtc-thumb-label { position: absolute; bottom: 0.35rem; left: 0.4rem; right: 0.4rem; color: #fff; font-size: 0.5rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .vtc-thumb-num { position: absolute; top: 0.35rem; left: 0.4rem; font-size: 0.5rem; font-weight: 700; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.1em; }
+
+    .why-channels-section { padding: 8rem 1.5rem; background: var(--color-brand-dark); position: relative; overflow: hidden; }
+    .why-channels-section::before { content: ''; position: absolute; top: -8rem; left: 50%; transform: translateX(-50%); width: 60rem; height: 30rem; border-radius: 50%; background: radial-gradient(ellipse, rgba(88,101,242,0.04) 0%, transparent 70%); pointer-events: none; }
+    .wcc-inner { max-width: 72rem; margin: 0 auto; }
+    .wcc-header { text-align: center; margin-bottom: 4.5rem; }
+    .wcc-badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.3rem 1rem; border-radius: 9999px; background: #fff; border: 1px solid #e4e4e7; font-size: 0.625rem; text-transform: uppercase; letter-spacing: 0.2em; color: #71717a; font-weight: 700; margin-bottom: 1.75rem; }
+    .wcc-badge-dot { width: 0.375rem; height: 0.375rem; background: #000; border-radius: 50%; }
+    .wcc-h2 { font-size: clamp(2rem, 4vw, 3.25rem); font-weight: 500; color: #000; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 1.25rem; }
+    .wcc-sub { font-size: 1.0625rem; color: #71717a; max-width: 34rem; margin: 0 auto; line-height: 1.7; }
+    .wcc-cards { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+    @media (min-width: 768px) { .wcc-cards { grid-template-columns: repeat(3, 1fr); } }
+    .wcc-card { background: #fff; border: 1px solid #f4f4f5; border-radius: 2rem; padding: 2.5rem; position: relative; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.04); transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease; }
+    .wcc-card:hover { transform: translateY(-4px); box-shadow: 0 4px 8px rgba(0,0,0,0.04), 0 20px 48px rgba(0,0,0,0.1); border-color: #e4e4e7; }
+    .wcc-card-bloom { position: absolute; top: -2rem; right: -2rem; width: 10rem; height: 10rem; border-radius: 50%; filter: blur(40px); opacity: 0.45; pointer-events: none; transition: opacity 0.35s ease; }
+    .wcc-card:hover .wcc-card-bloom { opacity: 0.65; }
+    .wcc-card-bloom-red { background: radial-gradient(circle, rgba(239,68,68,0.25), transparent 70%); }
+    .wcc-card-bloom-blue { background: radial-gradient(circle, rgba(88,101,242,0.25), transparent 70%); }
+    .wcc-card-bloom-purple { background: radial-gradient(circle, rgba(124,58,237,0.25), transparent 70%); }
+    .wcc-icon-wrap { width: 3rem; height: 3rem; border-radius: 1rem; margin-bottom: 1.75rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+    .wcc-icon-red { background: rgba(254,226,226,0.8); color: #dc2626; }
+    .wcc-icon-blue { background: rgba(224,231,255,0.8); color: #5865f2; }
+    .wcc-icon-purple { background: rgba(237,233,254,0.8); color: #7c3aed; }
+    .wcc-card-title { font-size: 1.25rem; font-weight: 700; color: #000; margin-bottom: 0.75rem; letter-spacing: -0.01em; }
+    .wcc-card-desc { font-size: 0.875rem; color: #71717a; line-height: 1.65; margin-bottom: 1.75rem; }
+    .wcc-divider { height: 1px; background: #f4f4f5; margin-bottom: 1.5rem; }
+    .wcc-bullets { display: flex; flex-direction: column; gap: 0.625rem; }
+    .wcc-bullet { display: flex; align-items: center; gap: 0.625rem; font-size: 0.8125rem; color: #52525b; font-weight: 500; }
+    .wcc-bullet-dot { width: 0.375rem; height: 0.375rem; border-radius: 50%; flex-shrink: 0; }
+    .wcc-bullet-dot-red { background: #ef4444; }
+    .wcc-bullet-dot-blue { background: #5865f2; }
+    .wcc-bullet-dot-purple { background: #7c3aed; }
+    .wcc-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    @media (min-width: 640px) { .wcc-stats { grid-template-columns: repeat(4, 1fr); } }
+    .wcc-stat { background: #fff; border: 1px solid #f4f4f5; border-radius: 1.5rem; padding: 1.75rem 1.5rem; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.04); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .wcc-stat:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+    .wcc-stat-value { font-size: 2rem; font-weight: 500; color: #000; letter-spacing: -0.02em; line-height: 1; margin-bottom: 0.375rem; }
+    .wcc-stat-label { font-size: 0.625rem; text-transform: uppercase; letter-spacing: 0.15em; color: #a1a1aa; font-weight: 700; }
+
+    #results { padding: 8rem 1.5rem; background: var(--color-brand-dark); }
+    .proof-show { position: relative; width: 100%; aspect-ratio: 16/9; max-width: 72rem; margin: 0 auto; border-radius: 2rem; overflow: hidden; box-shadow: 0 40px 80px -12px rgba(0,0,0,0.3), 0 0 0 1px rgba(0,0,0,0.06); background: #0a0a0a; }
+    .proof-show-slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transition: opacity 0.9s ease; }
+    .proof-show-slide.active { opacity: 1; }
+    .proof-show-overlay { position: absolute; inset: 0; z-index: 2; pointer-events: none; background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.06) 50%, transparent 100%); }
+    .proof-show-caption { position: absolute; bottom: 2rem; left: 2rem; right: 2rem; z-index: 4; display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; }
+    .proof-show-label { font-size: 0.625rem; text-transform: uppercase; letter-spacing: 0.2em; color: rgba(255,255,255,0.55); font-weight: 700; margin-bottom: 0.3rem; }
+    .proof-show-title { font-size: 1.25rem; font-weight: 700; color: #fff; letter-spacing: -0.01em; line-height: 1.2; }
+    .proof-show-dots { display: flex; gap: 0.375rem; align-items: center; flex-shrink: 0; }
+    .proof-show-dot { height: 0.3rem; border-radius: 9999px; background: rgba(255,255,255,0.35); transition: all 0.4s ease; width: 0.3rem; }
+    .proof-show-dot.active { background: rgba(255,255,255,0.9); width: 1.5rem; }
+    .proof-show-arrows { position: absolute; top: 50%; left: 0; right: 0; z-index: 5; transform: translateY(-50%); display: flex; justify-content: space-between; padding: 0 1.25rem; pointer-events: none; }
+    .proof-show-arrow { pointer-events: all; width: 2.75rem; height: 2.75rem; border-radius: 50%; background: rgba(255,255,255,0.1); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.18); display: flex; align-items: center; justify-content: center; cursor: pointer; color: #fff; transition: all 0.25s ease; }
+    .proof-show-arrow:hover { background: rgba(255,255,255,0.2); transform: scale(1.08); }
+    @media (max-width: 639px) {
+      .proof-show { border-radius: 1.25rem; aspect-ratio: 4/3; }
+      .proof-show-title { font-size: 1rem; }
+      .proof-show-caption { bottom: 1rem; left: 1rem; right: 1rem; }
+    }
+
+    #about { padding: 8rem 1.5rem; background: var(--color-brand-dark); }
+    .about-inner { max-width: 72rem; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 5rem; align-items: center; }
+    @media (min-width: 768px) { .about-inner { grid-template-columns: 1fr 1fr; } }
+    .about-img-wrap { aspect-ratio: 4/5; background: #e4e4e7; border-radius: 3rem; overflow: hidden; position: relative; border: 1px solid #fff; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); }
+    .about-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s; }
+    .about-img-wrap:hover img { transform: scale(1.05); }
+    .about-founder-badge { position: absolute; bottom: 2.5rem; left: 2.5rem; color: #fff; }
+    .about-text { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; opacity: 0.8; margin-bottom: 0.25rem; }
+    .about-name { font-size: 1.875rem; font-weight: 500; }
+    .about-quote { font-family: var(--font-serif); font-style: italic; font-size: 1.875rem; color: rgba(0,0,0,0.9); letter-spacing: -0.01em; line-height: 1.3; margin: 1.5rem 0; }
+    .about-body { color: #52525b; line-height: 1.7; font-size: 1.125rem; }
+
+    #faq {
+      padding: 8rem 1.5rem;
+      background: #fff;
+    }
+    .faq-inner-v2 {
+      max-width: 72rem;
+      margin: 0 auto;
+    }
+    .faq-h2 {
+      font-size: 2.5rem;
+      font-weight: 500;
+      color: #000;
+      text-decoration: underline;
+      text-decoration-color: #f4f4f5;
+      text-decoration-thickness: 6px;
+      text-underline-offset: 0.5rem;
+      text-align: center;
+    }
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem 2.5rem;
+      align-items: start;
+    }
+    @media (max-width: 767px) {
+      .faq-grid {
+        grid-template-columns: 1fr;
+        gap: 0.875rem;
+      }
+    }
+    .faq-card {
+      background: var(--color-brand-dark);
+      border: 1px solid #ececec;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      cursor: pointer;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .faq-card:hover {
+      border-color: #d4d4d8;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+    .faq-card.open {
+      border-color: #d4d4d8;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+    .faq-card-header {
+      padding: 1.375rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      user-select: none;
+    }
+    .faq-card-question {
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: #000;
+      line-height: 1.4;
+      flex: 1;
+    }
+    .faq-card-chevron {
+      flex-shrink: 0;
+      width: 1.75rem;
+      height: 1.75rem;
+      border-radius: 50%;
+      background: #fff;
+      border: 1px solid #e4e4e7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #71717a;
+      transition: transform 0.4s ease, background 0.25s ease, border-color 0.25s ease;
+    }
+    .faq-card.open .faq-card-chevron {
+      transform: rotate(180deg);
+      background: #000;
+      border-color: #000;
+      color: #fff;
+    }
+    .faq-card-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .faq-card.open .faq-card-body {
+      max-height: 20rem;
+    }
+    .faq-card-answer {
+      padding: 0 1.5rem 1.375rem;
+      font-size: 0.875rem;
+      color: #71717a;
+      line-height: 1.65;
+      border-top: 1px solid #f0f0f0;
+      padding-top: 1.125rem;
+    }
+
+    .cta-section { padding: 8rem 1.5rem; background: var(--color-brand-dark); }
+    .cta-box { max-width: 56rem; margin: 0 auto; background: #fff; border: 1px solid #f4f4f5; border-radius: 3rem; padding: 4rem; text-align: center; position: relative; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); }
+    .cta-hover-overlay { position: absolute; inset: 0; background: #fafafa; opacity: 0; transition: opacity 1s; pointer-events: none; }
+    .cta-box:hover .cta-hover-overlay { opacity: 1; }
+    .cta-h2 { font-size: clamp(2rem, 4vw, 3.125rem); font-weight: 500; margin-bottom: 1.5rem; position: relative; z-index: 1; color: #000; }
+    .cta-sub { color: #71717a; font-size: 1.125rem; margin-bottom: 3rem; position: relative; z-index: 1; max-width: 28rem; margin-left: auto; margin-right: auto; line-height: 1.6; }
+    .cta-btn-wrap { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; }
+
+    /* ============================================================
+       FOOTER — REDESIGNED: Linear/Framer-style luxury minimal
+       ============================================================ */
+    footer.premonly-footer {
+      background: #fff;
+      border-top: 1px solid #ececec;
+      padding: 3rem 0 0;
+    }
+
+    .footer-wrap {
+      max-width: 80rem;
+      margin: 0 auto;
+      padding: 0 2.5rem;
+    }
+
+    /* Main row: left brand block + right nav/contact block */
+    .footer-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem 5rem;
+      padding-bottom: 2.5rem;
+      align-items: start;
+    }
+
+    @media (max-width: 767px) {
+      .footer-body {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      .footer-wrap { padding: 0 1.5rem; }
+    }
+
+    /* LEFT */
+    .footer-left {
+      display: flex;
+      flex-direction: column;
+      gap: 1.125rem;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+    }
+    .footer-logo-icon {
+      width: 2rem;
+      height: 2rem;
+      background: #000;
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .footer-logo-text {
+      font-size: 1.125rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #000;
+      font-family: var(--font-sans);
+    }
+
+    .footer-desc {
+      font-size: 0.9375rem;
+      color: #71717a;
+      line-height: 1.6;
+      max-width: 21rem;
+      font-weight: 400;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.25rem;
+    }
+
+    .footer-soc {
+      width: 2.125rem;
+      height: 2.125rem;
+      border-radius: 0.625rem;
+      border: 1px solid #e4e4e7;
+      background: #fafafa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #71717a;
+      text-decoration: none;
+      transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+      flex-shrink: 0;
+    }
+    .footer-soc:hover {
+      background: #000;
+      border-color: #000;
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* RIGHT */
+    .footer-right {
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+      align-items: flex-start;
+    }
+
+    @media (min-width: 768px) {
+      .footer-right {
+        align-items: flex-end;
+      }
+    }
+
+    /* Large serif tagline — the visual anchor on the right */
+    .footer-tagline {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.625rem;
+      color: #000;
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+      text-align: right;
+    }
+    @media (max-width: 767px) {
+      .footer-tagline { text-align: left; font-size: 1.375rem; }
+    }
+
+    /* Nav links — inline row */
+    .footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.375rem 0.125rem;
+      list-style: none;
+      justify-content: flex-end;
+    }
+    @media (max-width: 767px) { .footer-nav { justify-content: flex-start; } }
+
+    .footer-nav li a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #71717a;
+      text-decoration: none;
+      padding: 0.3rem 0.75rem;
+      border-radius: 9999px;
+      transition: color 0.2s ease, background 0.2s ease;
+      display: inline-block;
+    }
+    .footer-nav li a:hover {
+      color: #000;
+      background: #f4f4f5;
+    }
+
+    /* Contact pill */
+    .footer-contact {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1.125rem;
+      border: 1px solid #e4e4e7;
+      border-radius: 9999px;
+      font-size: 0.8125rem;
+      color: #71717a;
+      text-decoration: none;
+      background: #fafafa;
+      font-weight: 500;
+      transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+      white-space: nowrap;
+    }
+    .footer-contact:hover {
+      border-color: #000;
+      color: #000;
+      background: #fff;
+      transform: translateY(-1px);
+    }
+    .footer-contact-dot {
+      width: 0.4rem;
+      height: 0.4rem;
+      border-radius: 50%;
+      background: #22c55e;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 2px rgba(34,197,94,0.2);
+      animation: pulse 2s infinite;
+    }
+
+    /* Divider + bottom row */
+    .footer-bottom {
+      border-top: 1px solid #f0f0f0;
+      padding: 1.125rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      color: #b0b0b0;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+
+    .footer-legal {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+    .footer-legal a {
+      font-size: 0.75rem;
+      color: #b0b0b0;
+      text-decoration: none;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      transition: color 0.2s ease;
+    }
+    .footer-legal a:hover { color: #000; }
+    /* ============================================================
+       END FOOTER REDESIGN
+       ============================================================ */
+
+    .fab {
+      position: fixed;
+      bottom: 1.75rem;
+      right: 1.75rem;
+      width: 4.5rem;
+      height: 4.5rem;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      background: linear-gradient(160deg, #7289f7 0%, #5865f2 45%, #4752c4 100%);
+      box-shadow:
+        0 0 0 1px rgba(88,101,242,0.45),
+        0 4px 16px rgba(88,101,242,0.55),
+        0 10px 40px rgba(88,101,242,0.35),
+        0 20px 60px rgba(88,101,242,0.2),
+        inset 0 1px 0 rgba(255,255,255,0.22);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+      overflow: hidden;
+    }
+    /* inner top-gloss highlight — mirrors the hero btn */
+    .fab::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 48%;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.16), rgba(255,255,255,0));
+      border-radius: 50% 50% 0 0;
+      pointer-events: none;
+    }
+    .fab:hover {
+      transform: translateY(-3px) scale(1.04);
+      background: linear-gradient(160deg, #8296ff 0%, #6475f5 45%, #5562d4 100%);
+      box-shadow:
+        0 0 0 1px rgba(88,101,242,0.55),
+        0 6px 24px rgba(88,101,242,0.7),
+        0 14px 48px rgba(88,101,242,0.5),
+        0 24px 72px rgba(88,101,242,0.3),
+        inset 0 1px 0 rgba(255,255,255,0.28);
+    }
+    .fab:active {
+      transform: translateY(0) scale(0.96);
+      box-shadow:
+        0 0 0 1px rgba(88,101,242,0.4),
+        0 2px 8px rgba(88,101,242,0.5),
+        0 6px 20px rgba(88,101,242,0.3),
+        inset 0 1px 0 rgba(255,255,255,0.18);
+    }
+    @media (max-width: 639px) {
+      .fab {
+        width: 4rem;
+        height: 4rem;
+        bottom: 1.25rem;
+        right: 1.25rem;
+      }
+    }
+
+    .section-mb { margin-bottom: 4rem; }
+    .section-h2 { font-size: 2.5rem; font-weight: 500; color: #000; }
+
+    @keyframes floatY { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-20px);} }
+    .float-anim { animation: floatY 4s ease-in-out infinite; }
+
+    .hero-bloom { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 150%; height: 150%; background: rgba(228,228,231,0.5); filter: blur(120px); border-radius: 50%; pointer-events: none; }
+    .hero-floating-icon { position: absolute; right: -3rem; top: 5rem; width: 4rem; height: 4rem; background: #fff; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); border-radius: 1rem; border: 1px solid #f4f4f5; display: none; align-items: center; justify-content: center; }
+    @media (min-width: 1280px) { .hero-floating-icon { display: flex; } }
+    .hero-circle-deco { position: absolute; left: -4rem; bottom: 5rem; width: 6rem; height: 6rem; background: rgba(244,244,245,0.5); backdrop-filter: blur(12px); border-radius: 50%; border: 1px solid rgba(228,228,231,0.5); display: none; }
+    @media (min-width: 1280px) { .hero-circle-deco { display: block; } }
+
+    .corner-tl { position: absolute; top: -1.5rem; left: -1.5rem; width: 4rem; height: 4rem; border-top: 3px solid rgba(0,0,0,0.1); border-left: 3px solid rgba(0,0,0,0.1); border-radius: 0.75rem 0 0 0; }
+    .corner-br { position: absolute; bottom: -1.5rem; right: -1.5rem; width: 4rem; height: 4rem; border-bottom: 3px solid rgba(0,0,0,0.1); border-right: 3px solid rgba(0,0,0,0.1); border-radius: 0 0 0.75rem 0; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel" data-presets="react">
+    const { useState, useEffect, useRef } = React;
+
+    const Icon = ({ d, ...props }) => (
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+        {typeof d === 'string' ? <path d={d}/> : d}
+      </svg>
+    );
+
+    const YoutubeIcon = (props) => <Icon {...props} d={<><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><polygon points="10 15 15 12 10 9 10 15"/></>} />;
+    const ShieldCheckIcon = (props) => <Icon {...props} d={<><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><polyline points="9 12 11 14 15 10"/></>} />;
+    const UserCheckIcon = (props) => <Icon {...props} d={<><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></>} />;
+    const LockIcon = (props) => <Icon {...props} d={<><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></>} />;
+    const MessageSquareIcon = (props) => <Icon {...props} d={<><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></>} />;
+    const StarIcon = (props) => <Icon {...props} d={<><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="currentColor" stroke="none"/></>} />;
+    const MenuIcon = (props) => <Icon {...props} d={<><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></>} />;
+    const XIcon = (props) => <Icon {...props} d={<><path d="M18 6 6 18"/><path d="m6 6 12 12"/></>} />;
+
+    const FadeIn = ({ children, delay = 0, className = "", style = {} }) => {
+      const ref = useRef(null);
+      const [visible, setVisible] = useState(false);
+      useEffect(() => {
+        const el = ref.current;
+        if (!el) return;
+        const observer = new IntersectionObserver(
+          ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect(); } },
+          { rootMargin: "-100px" }
+        );
+        observer.observe(el);
+        return () => observer.disconnect();
+      }, []);
+      return (
+        <div ref={ref} className={className} style={{ opacity: visible ? 1 : 0, filter: visible ? 'blur(0px)' : 'blur(10px)', transform: visible ? 'translateY(0)' : 'translateY(20px)', transition: `opacity 0.8s ${delay}s ease, filter 0.8s ${delay}s ease, transform 0.8s ${delay}s ease`, ...style }}>
+          {children}
+        </div>
+      );
+    };
+
+    const Button = ({ children, variant = 'primary', className = "", style = {} }) => (
+      <button className={`btn btn-${variant} ${className}`} style={style}>{children}</button>
+    );
+
+    const Navbar = () => {
+      const [isOpen, setIsOpen] = useState(false);
+      return (
+        <nav className="premonly-nav">
+          <div className="nav-inner">
+            <div className="nav-logo">
+
+
+  <img
+  src="https://i.ibb.co/6JZQNgK9/file-00000000289c720695b514839e99987b.png"
+  alt="Premonly Logo"
+  style={{
+    width: '29px',
+    height: '29px',
+    objectFit: 'contain',
+    display: 'block',
+    filter: 'brightness(0) invert(1)'
+  }}
+/>
+              <span className="nav-logo-text">Premonly</span>
+            </div>
+            <div className="nav-links">
+              {['Home','Services','Results','About','FAQ'].map(item => (
+                <a key={item} href={`#${item.toLowerCase()}`} className="nav-link">{item}</a>
+              ))}
+            </div>
+            <button className="nav-mobile-btn" onClick={() => setIsOpen(!isOpen)}>
+              {isOpen ? <XIcon width="24" height="24"/> : <MenuIcon width="24" height="24"/>}
+            </button>
+          </div>
+          {isOpen && (
+            <div className="mobile-menu">
+              {['Home','Services','Results','About','FAQ'].map(item => (
+                <a key={item} href={`#${item.toLowerCase()}`} onClick={() => setIsOpen(false)}>{item}</a>
+              ))}
+              <Button style={{width:'100%'}}>Join Discord</Button>
+            </div>
+          )}
+        </nav>
+      );
+    };
+
+    const PhoneMockup = () => {
+      const slides = [
+        "https://i.ibb.co/hJ4Vvf9V/x.jpg?w=640&h=1200&fit=crop&q=80",
+   "https://i.ibb.co/FL2M57nM/x.jpg?w=640&h=1200&fit=crop&q=80",
+"https://i.ibb.co/5xgr7vZm/x.jpg?w=640&h=1200&fit=crop&q=80",
+     "https://i.ibb.co/0phRmQ6k/x.jpg?w=640&h=1200&fit=crop&q=80",
+        "https://i.ibb.co/cXhLnv97/x.jpg?w=640&h=1200&fit=crop&q=80",
+        "https://i.ibb.co/spx6GKXR/x.jpg?w=640&h=1200&fit=crop&q=80",
+        
+   
+   ];
+      const [current, setCurrent] = useState(0);
+      useEffect(() => {
+        const interval = setInterval(() => setCurrent(prev => (prev + 1) % slides.length), 3800);
+        return () => clearInterval(interval);
+      }, []);
+      return (
+        <div className="phone-mockup">
+          <div className="phone-screen">
+            {slides.map((src, i) => (
+              <div key={i} className={`phone-slide${current === i ? ' active' : ''}`} style={{ backgroundImage: `url(${src})`, animationDelay: `${i * 0.2}s` }}/>
+            ))}
+            <div className="phone-slide-overlay"/>
+            <div className="phone-slide-dots">
+              {slides.map((_, i) => <div key={i} className={`phone-slide-dot${current === i ? ' active' : ''}`}/>)}
+            </div>
+          </div>
+          <div style={{position:'absolute',inset:0,pointerEvents:'none',border:'1px solid rgba(255,255,255,0.07)',borderRadius:'3rem'}}/>
+          <div className="phone-notch"/>
+        </div>
+      );
+    };
+
+    const Hero = () => (
+      <section id="home" style={{paddingTop:'10rem',paddingBottom:'6rem',paddingLeft:'1.5rem',paddingRight:'1.5rem',overflow:'hidden',background:'var(--color-brand-dark)'}}>
+        <div className="hero-inner">
+          <div style={{flex:1}}>
+            <FadeIn>
+              <div className="hero-badge"><span className="badge-dot"/>Trusted by 100+ Creators</div>
+              <h1 className="hero-h1">
+                Premium YouTube <span className="italic-serif" style={{color:'#a1a1aa'}}>Channels.</span><br/>
+                Transparent <span className="italic-serif" style={{opacity:0.7}}>Deals.</span><br/>
+                Proven Results.
+              </h1>
+              <p className="hero-sub">We help creators <span style={{color:'#000',fontWeight:500}}>buy &amp; sell</span> pre-monetized YouTube channels and provide expert support for reused content monetization appeals. Safe. Transparent. Reliable.</p>
+              <div className="hero-btns">
+                <button className="btn btn-discord" style={{padding:'1rem 2.5rem',fontSize:'1rem'}}>
+                  <svg width="22" height="22" viewBox="0 0 71 55" fill="none" xmlns="http://www.w3.org/2000/svg" style={{flexShrink:0}}>
+                    <path d="M60.105 4.898A58.55 58.55 0 0 0 45.653.415a.22.22 0 0 0-.233.11 40.784 40.784 0 0 0-1.8 3.697c-5.456-.817-10.886-.817-16.23 0a37.37 37.37 0 0 0-1.827-3.697.228.228 0 0 0-.233-.11 58.386 58.386 0 0 0-14.452 4.483.207.207 0 0 0-.095.082C1.578 18.73-.944 32.144.293 45.39a.244.244 0 0 0 .093.166c6.073 4.46 11.955 7.167 17.729 8.962a.23.23 0 0 0 .249-.082 42.08 42.08 0 0 0 3.627-5.9.225.225 0 0 0-.123-.312 38.772 38.772 0 0 1-5.539-2.638.228.228 0 0 1-.022-.378c.372-.279.744-.569 1.1-.862a.22.22 0 0 1 .23-.03c11.619 5.304 24.198 5.304 35.68 0a.219.219 0 0 1 .232.027c.356.293.728.586 1.103.865a.228.228 0 0 1-.02.378 36.384 36.384 0 0 1-5.54 2.635.226.226 0 0 0-.121.315 47.249 47.249 0 0 0 3.624 5.897.225.225 0 0 0 .249.084c5.801-1.795 11.684-4.502 17.757-8.961a.228.228 0 0 0 .092-.164c1.48-15.315-2.48-28.618-10.497-40.412a.18.18 0 0 0-.093-.084zM23.725 37.307c-3.497 0-6.381-3.211-6.381-7.156 0-3.944 2.826-7.156 6.381-7.156 3.583 0 6.438 3.24 6.382 7.156 0 3.945-2.826 7.156-6.382 7.156zm23.593 0c-3.498 0-6.382-3.211-6.382-7.156 0-3.944 2.826-7.156 6.382-7.156 3.583 0 6.437 3.24 6.381 7.156 0 3.945-2.798 7.156-6.381 7.156z" fill="white"/>
+                  </svg>
+                  JOIN DISCORD
+                </button>
+                <Button variant="secondary" style={{padding:'1rem 2.5rem',fontSize:'1rem'}}>Explore Services</Button>
+              </div>
+              <div className="hero-badges-row">
+                <div className="hero-badge-item"><ShieldCheckIcon width="16" height="16" color="#d4d4d8"/> 100% Transparent</div>
+                <div className="hero-badge-item"><LockIcon width="16" height="16" color="#d4d4d8"/> Safe &amp; Secure</div>
+                <div className="hero-badge-item"><UserCheckIcon width="16" height="16" color="#d4d4d8"/> Trusted by Creators</div>
+              </div>
+            </FadeIn>
+          </div>
+          <div className="hero-right" style={{flex:1}}>
+            <FadeIn delay={0.3} style={{position:'relative',zIndex:1}}><PhoneMockup/></FadeIn>
+            <div className="hero-bloom"/>
+            <div className="hero-floating-icon float-anim"><YoutubeIcon width="32" height="32" color="#000"/></div>
+            <div className="hero-circle-deco"/>
+          </div>
+        </div>
+      </section>
+    );
+
+    const Testimonials = () => {
+      const videos = [
+        { name: "Ali R.", role: "Content Creator", quote: "Got my channel within 24 hours. Great experience and legit service!", bg: "https://images.unsplash.com/photo-1536240478700-b869ad10e2d2?w=1200&h=675&fit=crop&q=80", thumb: "https://images.unsplash.com/photo-1536240478700-b869ad10e2d2?w=400&h=225&fit=crop&q=70" },
+        { name: "Usman K.", role: "YouTuber", quote: "They helped me win my reused content appeal. Monetization restored!", bg: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&h=675&fit=crop&q=80", thumb: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=225&fit=crop&q=70" },
+        { name: "Hamza T.", role: "Digital Marketer", quote: "Professional team and very transparent process. Highly recommended!", bg: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200&h=675&fit=crop&q=80", thumb: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=225&fit=crop&q=70" },
+        { name: "Abdul W.", role: "Agency Owner", quote: "Best place to buy and sell monetized channels. 100% trustworthy.", bg: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1200&h=675&fit=crop&q=80", thumb: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400&h=225&fit=crop&q=70" },
+        { name: "Bilal S.", role: "Full-Time Creator", quote: "Premonly made the whole process seamless. My channel grew fast!", bg: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200&h=675&fit=crop&q=80", thumb: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=225&fit=crop&q=70" },
+      ];
+      const [active, setActive] = useState(0);
+      const prev = () => setActive(i => (i - 1 + videos.length) % videos.length);
+      const next = () => setActive(i => (i + 1) % videos.length);
+      const ChevLeft = () => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>;
+      const ChevRight = () => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>;
+      const PlayTriangle = () => <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="5 3 19 12 5 21 5 3"/></svg>;
+      return (
+        <section className="testimonials-section">
+          <div className="section-inner">
+            <FadeIn className="section-mb"><h2 className="section-h2">Voices <span className="italic-serif" style={{color:'#a1a1aa'}}>from the Field</span></h2></FadeIn>
+            <FadeIn delay={0.1}>
+              <div className="vtc-wrap">
+                <div className="vtc-stage">
+                  <button className="vtc-arrow" onClick={prev} aria-label="Previous"><ChevLeft/></button>
+                  <div className="vtc-main">
+                    {videos.map((v, i) => <div key={i} className={`vtc-slide${active === i ? ' active' : ''}`} style={{backgroundImage:`url(${v.bg})`}}/>)}
+                    <div className="vtc-overlay"/>
+                    <div className="vtc-play"><PlayTriangle/></div>
+                    <div className="vtc-info">
+                      <div>
+                        <div className="vtc-stars">{[...Array(5)].map((_,j) => <StarIcon key={j} width="11" height="11" style={{color:'#fff'}}/>)}</div>
+                        <p className="vtc-name">{videos[active].name}</p>
+                        <p className="vtc-role">{videos[active].role}</p>
+                      </div>
+                      <p className="vtc-quote">"{videos[active].quote}"</p>
+                    </div>
+                  </div>
+                  <button className="vtc-arrow" onClick={next} aria-label="Next"><ChevRight/></button>
+                </div>
+                <div className="vtc-arrow-row" style={{display:'none'}}>
+                  <button className="vtc-arrow" onClick={prev} aria-label="Previous"><ChevLeft/></button>
+                  <button className="vtc-arrow" onClick={next} aria-label="Next"><ChevRight/></button>
+                </div>
+                <div className="vtc-thumbs">
+                  {videos.map((v, i) => (
+                    <div key={i} className={`vtc-thumb${active === i ? ' active' : ''}`} onClick={() => setActive(i)}>
+                      <div className="vtc-thumb-img" style={{backgroundImage:`url(${v.thumb})`}}/>
+                      <div className="vtc-thumb-overlay"/>
+                      <div className="vtc-thumb-num">Vid {i + 1}</div>
+                      <div className="vtc-thumb-label">{v.name}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </FadeIn>
+          </div>
+        </section>
+      );
+    };
+
+    const VideoSection = () => {
+      const cards = [
+        { bloom: 'wcc-card-bloom-red', iconWrap: 'wcc-icon-red', dotCls: 'wcc-bullet-dot-red', icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>, title: 'Instant Revenue', desc: 'Start earning from day one with fully monetized, creator-ready YouTube channels.', bullets: ['Monetization Enabled', 'Shorts Monetized', 'Long-Form Revenue Ready'] },
+        { bloom: 'wcc-card-bloom-blue', iconWrap: 'wcc-icon-blue', dotCls: 'wcc-bullet-dot-blue', icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><polyline points="9 12 11 14 15 10"/></svg>, title: '100% Safe & Secure', desc: 'All channels are manually verified for compliance, safety, and clean ownership history.', bullets: ['Verified Channels', 'Policy Compliant', 'Clean History'] },
+        { bloom: 'wcc-card-bloom-purple', iconWrap: 'wcc-icon-purple', dotCls: 'wcc-bullet-dot-purple', icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>, title: 'Premium Support', desc: 'Direct access to ongoing creator support, setup assistance, and growth guidance.', bullets: ['24/7 Assistance', 'Setup Guidance', 'Creator Support'] },
+      ];
+      const statsData = [
+        { value: '∞', label: 'Stock Available' }, { value: '100%', label: 'Success Rate' }, { value: '24/7', label: 'Support Available' }, { value: '$1M+', label: 'Creator Earnings' },
+      ];
+      return (
+        <section className="why-channels-section">
+          <div className="wcc-inner">
+            <FadeIn className="wcc-header">
+              <div className="wcc-badge"><span className="wcc-badge-dot"/>Why Choose Us</div>
+              <h2 className="wcc-h2">Why Choose Our <span className="italic-serif" style={{color:'#a1a1aa'}}>Channels?</span></h2>
+              <p className="wcc-sub">Everything you need to start earning immediately with our premium, hand-verified YouTube channels.</p>
+            </FadeIn>
+            <div className="wcc-cards">
+              {cards.map((c, i) => (
+                <FadeIn key={i} delay={i * 0.1}>
+                  <div className="wcc-card">
+                    <div className={`wcc-card-bloom ${c.bloom}`}/>
+                    <div className={`wcc-icon-wrap ${c.iconWrap}`}>{c.icon}</div>
+                    <p className="wcc-card-title">{c.title}</p>
+                    <p className="wcc-card-desc">{c.desc}</p>
+                    <div className="wcc-divider"/>
+                    <div className="wcc-bullets">
+                      {c.bullets.map((b, j) => <div key={j} className="wcc-bullet"><span className={`wcc-bullet-dot ${c.dotCls}`}/>{b}</div>)}
+                    </div>
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
+            <FadeIn delay={0.2}>
+              <div className="wcc-stats">
+                {statsData.map((s, i) => <div key={i} className="wcc-stat"><p className="wcc-stat-value">{s.value}</p><p className="wcc-stat-label">{s.label}</p></div>)}
+              </div>
+            </FadeIn>
+          </div>
+        </section>
+      );
+    };
+
+    const Proof = () => {
+      const slides = [
+        { img: "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=1280&h=720&fit=crop&q=85", label: "Creator Growth", title: "From 0 to 128K Subscribers in 60 Days" },
+        { img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1280&h=720&fit=crop&q=85", label: "Revenue Proof", title: "$9,850 Earned — First Month After Purchase" },
+        { img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1280&h=720&fit=crop&q=85", label: "Channel Analytics", title: "1.2M Watch Hours — Verified Studio Data" },
+        { img: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=1280&h=720&fit=crop&q=85", label: "Monetization Restored", title: "Appeal Approved — 22% Revenue Growth" },
+        { img: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1280&h=720&fit=crop&q=85", label: "Transparent Deals", title: "100% Verified — Clean Ownership Transfer" },
+      ];
+      const [active, setActive] = useState(0);
+      useEffect(() => { const t = setInterval(() => setActive(i => (i + 1) % slides.length), 4500); return () => clearInterval(t); }, []);
+      const prev = () => setActive(i => (i - 1 + slides.length) % slides.length);
+      const next = () => setActive(i => (i + 1) % slides.length);
+      const Arr = ({ d }) => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d={d}/></svg>;
+      return (
+        <section id="results" style={{padding:'8rem 1.5rem',background:'var(--color-brand-dark)'}}>
+          <div className="section-inner">
+            <FadeIn className="section-mb"><h2 className="section-h2">Proof, <span className="italic-serif" style={{color:'#a1a1aa'}}>Not Promises</span></h2></FadeIn>
+            <FadeIn delay={0.1}>
+              <div className="proof-show">
+                {slides.map((s, i) => <div key={i} className={`proof-show-slide${active === i ? ' active' : ''}`} style={{backgroundImage:`url(${s.img})`}}/>)}
+                <div className="proof-show-overlay"/>
+                <div className="proof-show-arrows">
+                  <button className="proof-show-arrow" onClick={prev}><Arr d="m15 18-6-6 6-6"/></button>
+                  <button className="proof-show-arrow" onClick={next}><Arr d="m9 18 6-6-6-6"/></button>
+                </div>
+                <div className="proof-show-caption">
+                  <div>
+                    <p className="proof-show-label">{slides[active].label}</p>
+                    <p className="proof-show-title">{slides[active].title}</p>
+                  </div>
+                  <div className="proof-show-dots">
+                    {slides.map((_, i) => <div key={i} className={`proof-show-dot${active === i ? ' active' : ''}`} onClick={() => setActive(i)} style={{cursor:'pointer'}}/>)}
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
+          </div>
+        </section>
+      );
+    };
+
+    const About = () => (
+      <section id="about" style={{padding:'8rem 1.5rem',background:'var(--color-brand-dark)'}}>
+        <div className="about-inner">
+          <FadeIn style={{position:'relative'}}>
+            <div className="about-img-wrap">
+              <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&h=1000&fit=crop" alt="Founder" referrerPolicy="no-referrer"/>
+              <div style={{position:'absolute',inset:0,background:'linear-gradient(to top, rgba(0,0,0,0.2), transparent)'}}/>
+              <div className="about-founder-badge">
+                <p className="about-text">Founder &amp; CEO</p>
+                <p className="about-name">Jibrail Ameen</p>
+              </div>
+            </div>
+            <div className="corner-tl"/><div className="corner-br"/>
+          </FadeIn>
+          <FadeIn delay={0.2}>
+            <h2 style={{fontSize:'clamp(2rem,3.5vw,3.125rem)',fontWeight:500,marginBottom:'2rem',lineHeight:1.1,color:'#000'}}>
+              Building <span className="italic-serif" style={{color:'#a1a1aa'}}>Trust</span> in a Digital Empire.
+            </h2>
+            <div style={{display:'flex',flexDirection:'column',gap:'2rem',color:'#52525b',lineHeight:1.7,fontSize:'1.125rem'}}>
+              <p>I've spent a decade navigating the YouTube ecosystem. From managing underground networks to building mainstream channels, the one constant has been the need for <span style={{color:'#000',fontWeight:500,textDecoration:'underline',textDecorationColor:'#e4e4e7',textUnderlineOffset:'4px'}}>integrity</span>.</p>
+              <p className="about-quote">"We don't just sell channels. We curate digital legacies for the next generation of creators."</p>
+              <p>Premonly was born from a simple observation: transparency is rare in this space. My mission is to fix that, one verified deal at a time.</p>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+    );
+
+    const FAQ = () => {
+      const faqs = [
+        { q: "What is Premonly?",                        a: "Premonly is a premium platform for creators to buy and sell monetized YouTube channels safely and transparently." },
+        { q: "Are the channels 100% safe?",              a: "Yes, every channel goes through a rigorous manual verification process before being listed on our platform." },
+        { q: "Do you provide monetization guarantee?",   a: "We provide high-quality channels that are already monetized. We also offer support if you face reused content issues." },
+        { q: "How does the buying/selling process work?",a: "It's simple: Choose a service or channel, join our Discord, and our team will guide you through the secure transaction." },
+        { q: "What if my reused content appeal is rejected?", a: "Our experts have a high success rate. We'll work closely with you to revise and perfect your appeal strategy." },
+        { q: "How long does channel delivery take?",     a: "Most verified channel transfers are completed within 24–72 hours depending on the deal structure." },
+        { q: "Do you offer after-purchase support?",     a: "Yes. We continue assisting creators after delivery with setup guidance, security recommendations, and monetization support." },
+        { q: "Can I sell my own monetized channel?",     a: "Absolutely. Premonly helps creators securely list and sell verified monetized YouTube channels." },
+      ];
+      const [open, setOpen] = useState(null);
+      const toggle = (i) => setOpen(open === i ? null : i);
+      const ChevronDown = () => (
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="m6 9 6 6 6-6"/>
+        </svg>
+      );
+      const col1 = faqs.slice(0, 4);
+      const col2 = faqs.slice(4, 8);
+      const FaqCard = ({ faq, index }) => {
+        const isOpen = open === index;
+        return (
+          <div className={`faq-card${isOpen ? ' open' : ''}`} onClick={() => toggle(index)}>
+            <div className="faq-card-header">
+              <p className="faq-card-question">{faq.q}</p>
+              <span className="faq-card-chevron"><ChevronDown/></span>
+            </div>
+            <div className="faq-card-body">
+              <div className="faq-card-answer">{faq.a}</div>
+            </div>
+          </div>
+        );
+      };
+      return (
+        <section id="faq" style={{padding:'8rem 1.5rem',background:'#fff'}}>
+          <div className="faq-inner-v2">
+            <FadeIn style={{marginBottom:'4rem',textAlign:'center'}}>
+              <h2 className="faq-h2">Common Questions</h2>
+            </FadeIn>
+            <FadeIn delay={0.1}>
+              <div className="faq-grid">
+                <div style={{display:'flex',flexDirection:'column',gap:'1rem'}}>
+                  {col1.map((faq, i) => <FaqCard key={i} faq={faq} index={i}/>)}
+                </div>
+                <div style={{display:'flex',flexDirection:'column',gap:'1rem'}}>
+                  {col2.map((faq, i) => <FaqCard key={i + 4} faq={faq} index={i + 4}/>)}
+                </div>
+              </div>
+            </FadeIn>
+          </div>
+        </section>
+      );
+    };
+
+    const CTA = () => (
+      <section className="cta-section">
+        <FadeIn>
+          <div className="cta-box">
+            <div className="cta-hover-overlay"/>
+            <h2 className="cta-h2">
+              Stop Starting From Zero.<br/>
+              <span className="italic-serif" style={{color:'#a1a1aa'}}>Start Already Monetized.</span>
+            </h2>
+            <p className="cta-sub">Premium YouTube channels ready for revenue, growth, and scale — without the years of trial and error.</p>
+            <div className="cta-btn-wrap">
+              <button className="btn btn-discord" style={{padding:'1.1rem 2.8rem',fontSize:'1rem',minWidth:'260px'}}>
+                <svg width="22" height="22" viewBox="0 0 71 55" fill="none" xmlns="http://www.w3.org/2000/svg" style={{flexShrink:0}}>
+                  <path d="M60.105 4.898A58.55 58.55 0 0 0 45.653.415a.22.22 0 0 0-.233.11 40.784 40.784 0 0 0-1.8 3.697c-5.456-.817-10.886-.817-16.23 0a37.37 37.37 0 0 0-1.827-3.697.228.228 0 0 0-.233-.11 58.386 58.386 0 0 0-14.452 4.483.207.207 0 0 0-.095.082C1.578 18.73-.944 32.144.293 45.39a.244.244 0 0 0 .093.166c6.073 4.46 11.955 7.167 17.729 8.962a.23.23 0 0 0 .249-.082 42.08 42.08 0 0 0 3.627-5.9.225.225 0 0 0-.123-.312 38.772 38.772 0 0 1-5.539-2.638.228.228 0 0 1-.022-.378c.372-.279.744-.569 1.1-.862a.22.22 0 0 1 .23-.03c11.619 5.304 24.198 5.304 35.68 0a.219.219 0 0 1 .232.027c.356.293.728.586 1.103.865a.228.228 0 0 1-.02.378 36.384 36.384 0 0 1-5.54 2.635.226.226 0 0 0-.121.315 47.249 47.249 0 0 0 3.624 5.897.225.225 0 0 0 .249.084c5.801-1.795 11.684-4.502 17.757-8.961a.228.228 0 0 0 .092-.164c1.48-15.315-2.48-28.618-10.497-40.412a.18.18 0 0 0-.093-.084zM23.725 37.307c-3.497 0-6.381-3.211-6.381-7.156 0-3.944 2.826-7.156 6.381-7.156 3.583 0 6.438 3.24 6.382 7.156 0 3.945-2.826 7.156-6.382 7.156zm23.593 0c-3.498 0-6.382-3.211-6.382-7.156 0-3.944 2.826-7.156 6.382-7.156 3.583 0 6.437 3.24 6.381 7.156 0 3.945-2.798 7.156-6.381 7.156z" fill="white"/>
+                </svg>
+                JOIN DISCORD
+              </button>
+              <p style={{marginTop:'1rem',fontSize:'0.8125rem',color:'#a1a1aa',textAlign:'center'}}>
+                or email us at: <a href="mailto:support@premonly.com" style={{color:'#71717a',textDecoration:'underline',textDecorationColor:'#d4d4d8',textUnderlineOffset:'3px',transition:'color 0.2s'}} onMouseEnter={e=>e.target.style.color='#000'} onMouseLeave={e=>e.target.style.color='#71717a'}>support@premonly.com</a>
+              </p>
+            </div>
+          </div>
+        </FadeIn>
+      </section>
+    );
+
+    /* ============================================================
+       FOOTER — REDESIGNED
+       Two-column body: left = logo + desc + socials
+                        right = serif tagline + nav pills + contact pill
+       Bottom bar: copyright + legal links
+       ============================================================ */
+    const Footer = () => {
+      const DiscordIcon = () => (
+        <svg width="14" height="14" viewBox="0 0 71 55" fill="currentColor">
+          <path d="M60.105 4.898A58.55 58.55 0 0 0 45.653.415a.22.22 0 0 0-.233.11 40.784 40.784 0 0 0-1.8 3.697c-5.456-.817-10.886-.817-16.23 0a37.37 37.37 0 0 0-1.827-3.697.228.228 0 0 0-.233-.11 58.386 58.386 0 0 0-14.452 4.483.207.207 0 0 0-.095.082C1.578 18.73-.944 32.144.293 45.39a.244.244 0 0 0 .093.166c6.073 4.46 11.955 7.167 17.729 8.962a.23.23 0 0 0 .249-.082 42.08 42.08 0 0 0 3.627-5.9.225.225 0 0 0-.123-.312 38.772 38.772 0 0 1-5.539-2.638.228.228 0 0 1-.022-.378c.372-.279.744-.569 1.1-.862a.22.22 0 0 1 .23-.03c11.619 5.304 24.198 5.304 35.68 0a.219.219 0 0 1 .232.027c.356.293.728.586 1.103.865a.228.228 0 0 1-.02.378 36.384 36.384 0 0 1-5.54 2.635.226.226 0 0 0-.121.315 47.249 47.249 0 0 0 3.624 5.897.225.225 0 0 0 .249.084c5.801-1.795 11.684-4.502 17.757-8.961a.228.228 0 0 0 .092-.164c1.48-15.315-2.48-28.618-10.497-40.412a.18.18 0 0 0-.093-.084zM23.725 37.307c-3.497 0-6.381-3.211-6.381-7.156 0-3.944 2.826-7.156 6.381-7.156 3.583 0 6.438 3.24 6.382 7.156 0 3.945-2.826 7.156-6.382 7.156zm23.593 0c-3.498 0-6.382-3.211-6.382-7.156 0-3.944 2.826-7.156 6.382-7.156 3.583 0 6.437 3.24 6.381 7.156 0 3.945-2.798 7.156-6.381 7.156z"/>
+        </svg>
+      );
+
+      return (
+        <footer className="premonly-footer">
+          <div className="footer-wrap">
+
+            {/* ── Main body row ── */}
+            <div className="footer-body">
+
+              {/* LEFT */}
+              <div className="footer-left">
+                <a href="#home" className="footer-logo">
+                  <div className="footer-logo-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/>
+                      <polygon points="10 15 15 12 10 9 10 15" fill="#fff" stroke="none"/>
+                    </svg>
+                  </div>
+                  <span className="footer-logo-text">Premonly</span>
+                </a>
+
+                <p className="footer-desc">
+                  Premium monetized YouTube channels for creators who want to start earning — not start from scratch.
+                </p>
+
+                <div className="footer-socials">
+                  {/* X */}
+                  <a href="#" className="footer-soc" aria-label="X / Twitter">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.631zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                  </a>
+                  {/* Instagram */}
+                  <a href="#" className="footer-soc" aria-label="Instagram">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                      <circle cx="12" cy="12" r="4"/>
+                      <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+                    </svg>
+                  </a>
+                  {/* Discord */}
+                  <a href="#" className="footer-soc" aria-label="Discord"><DiscordIcon/></a>
+                  {/* YouTube */}
+                  <a href="#" className="footer-soc" aria-label="YouTube">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/>
+                      <polygon points="10 15 15 12 10 9 10 15"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+
+              {/* RIGHT */}
+              <div className="footer-right">
+                <p className="footer-tagline">
+                  Built for creators<br/>
+                  <span style={{color:'#a1a1aa'}}>who mean business.</span>
+                </p>
+
+                <ul className="footer-nav">
+                  {[['Home','#home'],['Services','#services'],['Results','#results'],['About','#about'],['FAQ','#faq']].map(([label, href]) => (
+                    <li key={label}><a href={href}>{label}</a></li>
+                  ))}
+                </ul>
+
+                <a href="mailto:support@premonly.com" className="footer-contact">
+                  <span className="footer-contact-dot"/>
+                  support@premonly.com
+                </a>
+              </div>
+
+            </div>
+
+            {/* ── Bottom bar ── */}
+            <div className="footer-bottom">
+              <span className="footer-copy">© 2025 Premonly. All rights reserved.</span>
+              <ul className="footer-legal">
+                <li><a href="#">Privacy</a></li>
+                <li><a href="#">Terms</a></li>
+                <li><a href="#">Agency</a></li>
+              </ul>
+            </div>
+
+          </div>
+        </footer>
+      );
+    };
+
+    const FAB = () => (
+      <div className="fab" role="button" aria-label="Join our Discord">
+        <svg
+          width="26" height="26"
+          viewBox="0 0 71 55"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          style={{ flexShrink: 0, position: 'relative', zIndex: 1 }}
+        >
+          <path d="M60.105 4.898A58.55 58.55 0 0 0 45.653.415a.22.22 0 0 0-.233.11 40.784 40.784 0 0 0-1.8 3.697c-5.456-.817-10.886-.817-16.23 0a37.37 37.37 0 0 0-1.827-3.697.228.228 0 0 0-.233-.11 58.386 58.386 0 0 0-14.452 4.483.207.207 0 0 0-.095.082C1.578 18.73-.944 32.144.293 45.39a.244.244 0 0 0 .093.166c6.073 4.46 11.955 7.167 17.729 8.962a.23.23 0 0 0 .249-.082 42.08 42.08 0 0 0 3.627-5.9.225.225 0 0 0-.123-.312 38.772 38.772 0 0 1-5.539-2.638.228.228 0 0 1-.022-.378c.372-.279.744-.569 1.1-.862a.22.22 0 0 1 .23-.03c11.619 5.304 24.198 5.304 35.68 0a.219.219 0 0 1 .232.027c.356.293.728.586 1.103.865a.228.228 0 0 1-.02.378 36.384 36.384 0 0 1-5.54 2.635.226.226 0 0 0-.121.315 47.249 47.249 0 0 0 3.624 5.897.225.225 0 0 0 .249.084c5.801-1.795 11.684-4.502 17.757-8.961a.228.228 0 0 0 .092-.164c1.48-15.315-2.48-28.618-10.497-40.412a.18.18 0 0 0-.093-.084zM23.725 37.307c-3.497 0-6.381-3.211-6.381-7.156 0-3.944 2.826-7.156 6.381-7.156 3.583 0 6.438 3.24 6.382 7.156 0 3.945-2.826 7.156-6.382 7.156zm23.593 0c-3.498 0-6.382-3.211-6.382-7.156 0-3.944 2.826-7.156 6.382-7.156 3.583 0 6.437 3.24 6.381 7.156 0 3.945-2.798 7.156-6.381 7.156z" fill="white"/>
+        </svg>
+      </div>
+    );
+
+    function App() {
+      return (
+        <div className="min-h-screen selection-purple">
+          <Navbar/>
+          <Hero/>
+          <Testimonials/>
+          <VideoSection/>
+          <Proof/>
+          <About/>
+          <FAQ/>
+          <CTA/>
+          <Footer/>
+          <FAB/>
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App/>);
+  </script>
+</body>
+</html>
