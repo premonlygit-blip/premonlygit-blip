@@ -66,10 +66,11 @@
       display: flex; align-items: center; justify-content: center;
     }
     .nav-logo-text { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.02em; color: #fff; }
+    @media (min-width: 768px) { .nav-logo-text { font-size: 1.4375rem; } }
     .nav-links { display: none; align-items: center; gap: 2rem; }
     @media (min-width: 768px) { .nav-links { display: flex; } .nav-mobile-btn { display: none !important; } .nav-desktop-cta { display: none !important; } }
     .nav-link { font-size: 0.875rem; color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.2s; }
-    @media (min-width: 768px) { .nav-link { font-size: 0.9375rem; } }
+    @media (min-width: 768px) { .nav-link { font-size: 1.0625rem; } }
     .nav-link:hover { color: #fff; }
     .nav-desktop-cta { display: none; }
     .nav-mobile-btn { background: none; border: none; cursor: pointer; color: #fff; display: flex; }
@@ -156,6 +157,7 @@
     .badge-dot { width: 0.375rem; height: 0.375rem; background: #000; border-radius: 50%; animation: pulse 2s infinite; }
     @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.5;} }
     .hero-h1 { font-size: clamp(2.5rem, 6vw, 5.5rem); font-weight: 500; line-height: 0.95; margin-bottom: 2rem; color: #000; }
+    @media (min-width: 1024px) { .nowrap-desktop { white-space: nowrap; } }
     .hero-sub { color: #71717a; font-size: 1.125rem; line-height: 1.7; margin-bottom: 2rem; max-width: 36rem; }
     .hero-btns { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 3rem; }
     @media (min-width: 640px) { .hero-btns { flex-direction: row; align-items: center; } }
@@ -174,18 +176,14 @@
     .phone-notch { position: absolute; top: 0.5rem; left: 50%; transform: translateX(-50%); width: 5rem; height: 1.5rem; background: #111; border-radius: 9999px; z-index: 10; }
 
     .phone-slide {
-      position: absolute; inset: 0;
-      background-size: cover; background-position: center;
-      opacity: 0; transition: opacity 1.2s ease;
-      transform: scale(1.05);
-      animation: slideZoom 6s ease-in-out infinite;
-    }
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+}
     .phone-slide.active { opacity: 1; }
-    @keyframes slideZoom {
-      0% { transform: scale(1.05); }
-      50% { transform: scale(1.0); }
-      100% { transform: scale(1.05); }
-    }
+
     .phone-slide-overlay {
       position: absolute; inset: 0;
       background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.2) 100%);
@@ -795,8 +793,8 @@
   src="https://i.ibb.co/6JZQNgK9/file-00000000289c720695b514839e99987b.png"
   alt="Premonly Logo"
   style={{
-    width: '29px',
-    height: '29px',
+    width: '37px',
+    height: '37px',
     objectFit: 'contain',
     display: 'block',
     filter: 'brightness(0) invert(1)'
@@ -828,7 +826,7 @@
     const PhoneMockup = () => {
       const slides = [
         "https://i.ibb.co/hJ4Vvf9V/x.jpg?w=640&h=1200&fit=crop&q=80",
-   "https://i.ibb.co/FL2M57nM/x.jpg?w=640&h=1200&fit=crop&q=80",
+   
 "https://i.ibb.co/5xgr7vZm/x.jpg?w=640&h=1200&fit=crop&q=80",
      "https://i.ibb.co/0phRmQ6k/x.jpg?w=640&h=1200&fit=crop&q=80",
         "https://i.ibb.co/cXhLnv97/x.jpg?w=640&h=1200&fit=crop&q=80",
@@ -865,7 +863,7 @@
             <FadeIn>
               <div className="hero-badge"><span className="badge-dot"/>Trusted by 100+ Creators</div>
               <h1 className="hero-h1">
-                Premium YouTube <span className="italic-serif" style={{color:'#a1a1aa'}}>Channels.</span><br/>
+                Premium <span className="nowrap-desktop">YouTube <span className="italic-serif" style={{color:'#a1a1aa'}}>Channels.</span></span><br/>
                 Transparent <span className="italic-serif" style={{opacity:0.7}}>Deals.</span><br/>
                 Proven Results.
               </h1>
@@ -1148,10 +1146,7 @@
     );
 
     /* ============================================================
-       FOOTER — REDESIGNED
-       Two-column body: left = logo + desc + socials
-                        right = serif tagline + nav pills + contact pill
-       Bottom bar: copyright + legal links
+       FOOTER — REDESIGNED: Linear/Framer-style luxury minimal
        ============================================================ */
     const Footer = () => {
       const DiscordIcon = () => (
