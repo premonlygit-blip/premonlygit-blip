@@ -899,12 +899,14 @@
 
     const Testimonials = () => {
       const videos = [
-        { name: "Ali R.", role: "Content Creator", quote: "Got my channel within 24 hours. Great experience and legit service!", bg: "https://images.unsplash.com/photo-1536240478700-b869ad10e2d2?w=1200&h=675&fit=crop&q=80", thumb: "https://images.unsplash.com/photo-1536240478700-b869ad10e2d2?w=400&h=225&fit=crop&q=70" },
-        { name: "Usman K.", role: "YouTuber", quote: "They helped me win my reused content appeal. Monetization restored!", bg: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&h=675&fit=crop&q=80", thumb: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=225&fit=crop&q=70" },
-        { name: "Hamza T.", role: "Digital Marketer", quote: "Professional team and very transparent process. Highly recommended!", bg: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200&h=675&fit=crop&q=80", thumb: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=225&fit=crop&q=70" },
-        { name: "Abdul W.", role: "Agency Owner", quote: "Best place to buy and sell monetized channels. 100% trustworthy.", bg: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1200&h=675&fit=crop&q=80", thumb: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400&h=225&fit=crop&q=70" },
-        { name: "Bilal S.", role: "Full-Time Creator", quote: "Premonly made the whole process seamless. My channel grew fast!", bg: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200&h=675&fit=crop&q=80", thumb: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=225&fit=crop&q=70" },
-      ];
+  {
+    name: "Ali R.",
+    role: "Content Creator",
+    quote: "Got my channel within 24 hours. Great experience and legit service!",
+    youtubeId: "-UIgptsQ1xY",
+    thumb: "https://img.youtube.com/vi/-UIgptsQ1xY/maxresdefault.jpg"
+  }
+];
       const [active, setActive] = useState(0);
       const prev = () => setActive(i => (i - 1 + videos.length) % videos.length);
       const next = () => setActive(i => (i + 1) % videos.length);
