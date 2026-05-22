@@ -920,7 +920,7 @@
             <FadeIn delay={0.1}>
               <div className="vtc-wrap">
                 <div className="vtc-stage">
-                  <button className="vtc-arrow" onClick={prev} aria-label="Previous"><ChevLeft/></button>
+                
                  <div className="vtc-main">
 
   {videos.map((v, i) => (
@@ -936,7 +936,7 @@
         <iframe
           width="100%"
           height="100%"
-          src={`https://www.youtube.com/embed/${v.youtubeId}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&loop=1&playlist=${v.youtubeId}&disablekb=1`}
+         src={`https://www.youtube.com/embed/${v.youtubeId}?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&loop=1&playlist=${v.youtubeId}`}
           title={v.name}
           frameBorder="0"
           allow="autoplay; encrypted-media"
@@ -962,22 +962,12 @@
 </div>
                 
                     
-                  <button className="vtc-arrow" onClick={next} aria-label="Next"><ChevRight/></button>
+            
                 </div>
                 <div className="vtc-arrow-row" style={{display:'none'}}>
-                  <button className="vtc-arrow" onClick={prev} aria-label="Previous"><ChevLeft/></button>
-                  <button className="vtc-arrow" onClick={next} aria-label="Next"><ChevRight/></button>
+              
                 </div>
-                <div className="vtc-thumbs">
-                  {videos.map((v, i) => (
-                    <div key={i} className={`vtc-thumb${active === i ? ' active' : ''}`} onClick={() => setActive(i)}>
-                      <div className="vtc-thumb-img" style={{backgroundImage:`url(${v.thumb})`}}/>
-                      <div className="vtc-thumb-overlay"/>
-                      <div className="vtc-thumb-num">Vid {i + 1}</div>
-                      <div className="vtc-thumb-label">{v.name}</div>
-                    </div>
-                  ))}
-                </div>
+               
               </div>
             </FadeIn>
           </div>
