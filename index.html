@@ -922,9 +922,36 @@
                 <div className="vtc-stage">
                   <button className="vtc-arrow" onClick={prev} aria-label="Previous"><ChevLeft/></button>
                   <div className="vtc-main">
-                    {videos.map((v, i) => <div key={i} className={`vtc-slide${active === i ? ' active' : ''}`} style={{backgroundImage:`url(${v.bg})`}}/>)}
-                    <div className="vtc-overlay"/>
-                    <div className="vtc-play"><PlayTriangle/></div>
+{videos.map((v, i) => (
+  <div
+    key={i}
+    className={`vtc-slide${active === i ? ' active' : ''}`}
+    style={{
+      opacity: active === i ? 1 : 0,
+      transition: 'opacity 0.5s ease'
+    }}
+  >
+    {active === i && (
+      <iframe
+        width="100%"
+        height="100%"
+        src={`https://www.youtube.com/embed/${v.youtubeId}?autoplay=1&mute=1&controls=1&rel=0&loop=1&playlist=${v.youtubeId}`}
+        title={v.name}
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+        style={{
+          width: '100%',
+          height: '100%',
+          border: 'none',
+          borderRadius: '1.75rem',
+          objectFit: 'cover'
+        }}
+      />
+    )}
+  </div>
+))}
+                    <div className="vtc-overlay"/>              
                     <div className="vtc-info">
                       <div>
                         <div className="vtc-stars">{[...Array(5)].map((_,j) => <StarIcon key={j} width="11" height="11" style={{color:'#fff'}}/>)}</div>
