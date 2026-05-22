@@ -935,7 +935,7 @@
       <iframe
         width="100%"
         height="100%"
-        src={`https://www.youtube.com/embed/${v.youtubeId}?autoplay=1&mute=1&controls=1&rel=0&loop=1&playlist=${v.youtubeId}`}
+        src={`https://www.youtube.com/embed/${v.youtubeId}?autoplay=1&mute=1&controls=0&showinfo=0&modestbranding=1&rel=0&loop=1&playlist=${v.youtubeId}&disablekb=1`}
         title={v.name}
         frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -951,9 +951,13 @@
     )}
   </div>
 ))}
-                    <div className="vtc-overlay"/>              
-                    <div className="vtc-info">
-                      <div>
+                    <div
+  className="vtc-overlay"
+  style={{
+    background: 'rgba(0,0,0,0.08)'
+  }}
+/>             
+                
                         <div className="vtc-stars">{[...Array(5)].map((_,j) => <StarIcon key={j} width="11" height="11" style={{color:'#fff'}}/>)}</div>
                         <p className="vtc-name">{videos[active].name}</p>
                         <p className="vtc-role">{videos[active].role}</p>
