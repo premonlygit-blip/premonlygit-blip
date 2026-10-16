@@ -1,651 +1,252 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Premonly - Premium YouTube Channel Solutions</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#090912">
+  <meta name="description" content="Premonly helps creators explore monetized YouTube channels, navigate transparent channel deals, and get guidance on reused-content monetization appeals.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://premonly.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://premonly.com/">
+  <meta property="og:title" content="Premonly — Premium Channels. Clearer Possibilities.">
+  <meta property="og:description" content="Discover monetized YouTube channels, transparent deals and expert-led appeal guidance.">
+  <meta property="og:image" content="https://premonly.com/og-premonly.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Premonly — Premium Channels. Clearer Possibilities.">
+  <meta name="twitter:description" content="Monetized YouTube channels, transparent deals and appeal guidance.">
+  <meta name="twitter:image" content="https://premonly.com/og-premonly.png">
+  <title>Premonly — Premium YouTube Channels & Appeal Support</title>
+  <link rel="icon" href="https://i.ibb.co/6JZQNgK9/file-00000000289c720695b514839e99987b.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="icon" href="https://i.ibb.co/6JZQNgK9/file-00000000289c720695b514839e99987b.png"/>
+  <link rel="preconnect" href="https://i.ibb.co">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Premonly","url":"https://premonly.com/","description":"YouTube channel sourcing, channel deals and monetization appeal support.","email":"support@premonly.com","logo":"https://i.ibb.co/6JZQNgK9/file-00000000289c720695b514839e99987b.png","sameAs":["https://discord.gg/sxxYK4DYwJ"]}</script>
   <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{
-      --sans:"Outfit",ui-sans-serif,system-ui,sans-serif;
-      --serif:"Instrument Serif",serif;
-      --bg:#f8f8f8;
-    }
-    html{scroll-behavior:smooth}
-    body{background:var(--bg);color:#000;font-family:var(--sans);-webkit-font-smoothing:antialiased}
-    ::selection{background:rgba(168,85,247,.3)}
-    h1,h2,h3{letter-spacing:-.02em;font-weight:500;color:#000}
-    .serif{font-family:var(--serif);font-style:italic;font-weight:400}
-    a{text-decoration:none}
-    img{display:block}
-
-    /* NAV */
-    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(0,0,0,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08)}
-    .nav-in{max-width:80rem;margin:0 auto;padding:0 1.5rem;height:4rem;display:flex;align-items:center;justify-content:space-between}
-    .nav-logo{display:flex;align-items:center;gap:.5rem;text-decoration:none}
-    .nav-logo img{width:34px;height:34px;object-fit:contain;filter:brightness(0) invert(1)}
-    .nav-logo span{font-size:1.25rem;font-weight:700;letter-spacing:-.02em;color:#fff}
-    .nav-links{display:none;align-items:center;gap:2rem}
-    @media(min-width:768px){.nav-links{display:flex}.nav-ham{display:none!important}}
-    .nav-link{font-size:.9375rem;color:rgba(255,255,255,.55);transition:color .2s}
-    .nav-link:hover{color:#fff}
-    .nav-ham{background:none;border:none;cursor:pointer;color:#fff;padding:.25rem;display:flex}
-    .mob-menu{display:none;flex-direction:column;gap:1rem;background:#0a0a0a;border-bottom:1px solid rgba(255,255,255,.08);padding:1.5rem}
-    .mob-menu.open{display:flex}
-    .mob-menu a{font-size:1.125rem;color:rgba(255,255,255,.6)}
-    .mob-menu a:hover{color:#fff}
-
-    /* BUTTONS */
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.75rem 1.75rem;border-radius:9999px;font-family:var(--sans);font-size:.9375rem;font-weight:500;cursor:pointer;border:none;transition:all .25s;text-decoration:none}
-    .btn-primary{background:#000;color:#fff}
-    .btn-primary:hover{background:#222}
-    .btn-secondary{background:#fff;color:#000;border:1px solid #e4e4e7}
-    .btn-secondary:hover{background:#fafafa}
-    .btn-discord{
-      background:linear-gradient(160deg,#7289f7 0%,#5865f2 45%,#4752c4 100%);
-      color:#fff;font-weight:700;letter-spacing:.04em;text-transform:uppercase;font-size:.875rem;
-      box-shadow:0 0 0 1px rgba(88,101,242,.4),0 4px 16px rgba(88,101,242,.5),0 8px 32px rgba(88,101,242,.3),inset 0 1px 0 rgba(255,255,255,.22);
-      position:relative;overflow:hidden
-    }
-    .btn-discord::before{content:'';position:absolute;top:0;left:0;right:0;height:45%;background:linear-gradient(to bottom,rgba(255,255,255,.14),transparent);border-radius:9999px 9999px 0 0;pointer-events:none}
-    .btn-discord:hover{transform:translateY(-2px);box-shadow:0 0 0 1px rgba(88,101,242,.5),0 6px 24px rgba(88,101,242,.65),0 12px 48px rgba(88,101,242,.4),inset 0 1px 0 rgba(255,255,255,.25);background:linear-gradient(160deg,#8296ff 0%,#6475f5 45%,#5562d4 100%)}
-
-    /* HERO */
-    #home{padding:10rem 1.5rem 6rem;overflow:hidden}
-    .hero-in{max-width:80rem;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:4rem}
-    @media(min-width:1024px){.hero-in{flex-direction:row}}
-    .hero-left{flex:1}
-    .badge{display:inline-flex;align-items:center;gap:.5rem;padding:.25rem 1rem;background:#fff;border:1px solid #e4e4e7;border-radius:9999px;font-size:.625rem;text-transform:uppercase;letter-spacing:.2em;color:#71717a;font-weight:700;margin-bottom:2rem}
-    .badge-dot{width:.375rem;height:.375rem;background:#000;border-radius:50%;animation:pulse 2s infinite}
-    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-    .hero-h1{font-size:clamp(2.5rem,6vw,5.5rem);line-height:.95;margin-bottom:1.75rem}
-    .hero-sub{color:#71717a;font-size:1.125rem;line-height:1.7;margin-bottom:2rem;max-width:36rem}
-    .hero-btns{display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:2.5rem}
-    .hero-trust{display:flex;flex-wrap:wrap;gap:1.5rem}
-    .trust-item{display:flex;align-items:center;gap:.4rem;font-size:.6875rem;text-transform:uppercase;letter-spacing:.15em;color:#a1a1aa;font-weight:500}
-    .hero-right{flex:1;display:flex;justify-content:center;position:relative}
-
-    /* PHONE */
-    .phone{width:290px;aspect-ratio:9/19;background:#111;border-radius:3rem;border:8px solid #1a1a1a;box-shadow:0 40px 80px -12px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.06);overflow:hidden;position:relative;flex-shrink:0}
-    .phone-screen{height:100%;position:relative;overflow:hidden;background:#000}
-    .phone-notch{position:absolute;top:.5rem;left:50%;transform:translateX(-50%);width:5rem;height:1.5rem;background:#111;border-radius:9999px;z-index:10}
-    .phone-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity .8s ease}
-    .phone-slide.active{opacity:1}
-    .phone-dots{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);display:flex;gap:.375rem;z-index:5}
-    .phone-dot{width:.3rem;height:.3rem;border-radius:9999px;background:rgba(255,255,255,.35);transition:all .4s}
-    .phone-dot.active{background:rgba(255,255,255,.9);width:1.2rem}
-    .phone-border{position:absolute;inset:0;border:1px solid rgba(255,255,255,.07);border-radius:3rem;pointer-events:none}
-
-    /* FADE IN */
-    .fade{opacity:0;transform:translateY(20px);filter:blur(6px);transition:opacity .8s ease,transform .8s ease,filter .8s ease}
-    .fade.visible{opacity:1;transform:none;filter:none}
-
-    /* TESTIMONIALS */
-    #testimonials{padding:8rem 1.5rem;background:#fff}
-    .section-label{font-size:2.25rem;font-weight:500;margin-bottom:3rem;color:#000}
-    .vtc-main{position:relative;width:100%;max-width:64rem;margin:0 auto;aspect-ratio:16/9;background:#0a0a0a;border-radius:1.75rem;overflow:hidden;box-shadow:0 32px 64px -12px rgba(0,0,0,.35),0 0 0 1px rgba(0,0,0,.06)}
-    .vtc-main iframe{width:100%;height:100%;border:none}
-    @media(max-width:639px){.vtc-main{aspect-ratio:4/3;border-radius:1.25rem}}
-
-    /* WHY US */
-    #services{padding:8rem 1.5rem;background:var(--bg);position:relative;overflow:hidden}
-    #services::before{content:'';position:absolute;top:-8rem;left:50%;transform:translateX(-50%);width:60rem;height:30rem;border-radius:50%;background:radial-gradient(ellipse,rgba(88,101,242,.04) 0%,transparent 70%);pointer-events:none}
-    .sec-in{max-width:72rem;margin:0 auto}
-    .sec-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.3rem 1rem;border-radius:9999px;background:#fff;border:1px solid #e4e4e7;font-size:.625rem;text-transform:uppercase;letter-spacing:.2em;color:#71717a;font-weight:700;margin-bottom:1.75rem}
-    .sec-badge-dot{width:.375rem;height:.375rem;background:#000;border-radius:50%}
-    .sec-h2{font-size:clamp(2rem,4vw,3.25rem);font-weight:500;color:#000;letter-spacing:-.02em;line-height:1.1;margin-bottom:1.25rem}
-    .sec-sub{font-size:1.0625rem;color:#71717a;max-width:34rem;line-height:1.7}
-    .sec-header{text-align:center;margin-bottom:4.5rem}
-    .cards{display:grid;grid-template-columns:1fr;gap:1.5rem;margin-bottom:1.5rem}
-    @media(min-width:768px){.cards{grid-template-columns:repeat(3,1fr)}}
-    .card{background:#fff;border:1px solid #f4f4f5;border-radius:2rem;padding:2.5rem;position:relative;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.04);transition:transform .35s,box-shadow .35s,border-color .35s}
-    .card:hover{transform:translateY(-4px);box-shadow:0 4px 8px rgba(0,0,0,.04),0 20px 48px rgba(0,0,0,.1);border-color:#e4e4e7}
-    .card-bloom{position:absolute;top:-2rem;right:-2rem;width:10rem;height:10rem;border-radius:50%;filter:blur(40px);opacity:.45;pointer-events:none;transition:opacity .35s}
-    .card:hover .card-bloom{opacity:.65}
-    .bloom-red{background:radial-gradient(circle,rgba(239,68,68,.25),transparent 70%)}
-    .bloom-blue{background:radial-gradient(circle,rgba(88,101,242,.25),transparent 70%)}
-    .bloom-purple{background:radial-gradient(circle,rgba(124,58,237,.25),transparent 70%)}
-    .icon-wrap{width:3rem;height:3rem;border-radius:1rem;margin-bottom:1.75rem;display:flex;align-items:center;justify-content:center}
-    .icon-red{background:rgba(254,226,226,.8);color:#dc2626}
-    .icon-blue{background:rgba(224,231,255,.8);color:#5865f2}
-    .icon-purple{background:rgba(237,233,254,.8);color:#7c3aed}
-    .card-title{font-size:1.25rem;font-weight:700;color:#000;margin-bottom:.75rem;letter-spacing:-.01em}
-    .card-desc{font-size:.875rem;color:#71717a;line-height:1.65;margin-bottom:1.75rem}
-    .divider{height:1px;background:#f4f4f5;margin-bottom:1.5rem}
-    .bullets{display:flex;flex-direction:column;gap:.625rem}
-    .bullet{display:flex;align-items:center;gap:.625rem;font-size:.8125rem;color:#52525b;font-weight:500}
-    .bullet-dot{width:.375rem;height:.375rem;border-radius:50%;flex-shrink:0}
-    .dot-red{background:#ef4444}.dot-blue{background:#5865f2}.dot-purple{background:#7c3aed}
-    .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
-    @media(min-width:640px){.stats{grid-template-columns:repeat(4,1fr)}}
-    .stat{background:#fff;border:1px solid #f4f4f5;border-radius:1.5rem;padding:1.75rem 1.5rem;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.04);transition:transform .3s,box-shadow .3s}
-    .stat:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.08)}
-    .stat-val{font-size:2rem;font-weight:500;color:#000;letter-spacing:-.02em;line-height:1;margin-bottom:.375rem}
-    .stat-lbl{font-size:.625rem;text-transform:uppercase;letter-spacing:.15em;color:#a1a1aa;font-weight:700}
-
-    /* PROOF */
-    #results{padding:8rem 1.5rem;background:var(--bg)}
-    .proof{position:relative;width:100%;max-width:72rem;margin:0 auto;aspect-ratio:16/9;border-radius:2rem;overflow:hidden;box-shadow:0 40px 80px -12px rgba(0,0,0,.3),0 0 0 1px rgba(0,0,0,.06);background:#0a0a0a}
-    .proof-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity .9s ease}
-    .proof-slide.active{opacity:1}
-    .proof-overlay{position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(to top,rgba(0,0,0,.5) 0%,rgba(0,0,0,.06) 50%,transparent 100%)}
-    .proof-caption{position:absolute;bottom:2rem;left:2rem;right:2rem;z-index:4;display:flex;align-items:flex-end;justify-content:space-between;gap:1rem}
-    .proof-lbl{font-size:.625rem;text-transform:uppercase;letter-spacing:.2em;color:rgba(255,255,255,.55);font-weight:700;margin-bottom:.3rem}
-    .proof-title{font-size:1.25rem;font-weight:700;color:#fff;letter-spacing:-.01em;line-height:1.2}
-    .proof-dots{display:flex;gap:.375rem;align-items:center;flex-shrink:0}
-    .proof-dot{height:.3rem;border-radius:9999px;background:rgba(255,255,255,.35);transition:all .4s;width:.3rem;cursor:pointer}
-    .proof-dot.active{background:rgba(255,255,255,.9);width:1.5rem}
-    .proof-arrows{position:absolute;top:50%;left:0;right:0;z-index:5;transform:translateY(-50%);display:flex;justify-content:space-between;padding:0 1.25rem;pointer-events:none}
-    .proof-arr{pointer-events:all;width:2.75rem;height:2.75rem;border-radius:50%;background:rgba(255,255,255,.1);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;cursor:pointer;color:#fff;transition:all .25s}
-    .proof-arr:hover{background:rgba(255,255,255,.2);transform:scale(1.08)}
-    @media(max-width:639px){.proof{border-radius:1.25rem;aspect-ratio:4/3}.proof-title{font-size:1rem}.proof-caption{bottom:1rem;left:1rem;right:1rem}}
-
+    :root{color-scheme:light;--ink:#101016;--night:#090912;--cream:#f7f7f7;--muted:#737482;--purple:#7167f7;--serif:'Instrument Serif',Georgia,serif;--sans:'Outfit',system-ui,-apple-system,sans-serif;--shell:1192px}
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:110px}
+    body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:clip}
+    a{color:inherit;text-decoration:none}button{font:inherit}img{display:block;max-width:100%}
+    button,a{-webkit-tap-highlight-color:transparent}
+    :focus-visible{outline:3px solid #a89ffe;outline-offset:4px}
+    ::selection{background:#aaa4ff;color:#111}
+    .serif{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.055em}
+    .container{width:min(calc(100% - 52px),var(--shell));margin-inline:auto}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .progress{position:fixed;top:0;left:0;z-index:120;width:100%;height:2px;transform-origin:left;transform:scaleX(0);background:linear-gradient(90deg,#a89fff,#786aff,#cfb9ff);pointer-events:none}
+    .nav-wrap{position:fixed;z-index:110;left:0;right:0;top:17px;pointer-events:none;transition:top .3s ease}
+    .navbar{pointer-events:auto;display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:67px;padding:8px 12px 8px 22px;border:1px solid rgba(255,255,255,.15);border-radius:21px;background:rgba(18,18,28,.83);box-shadow:0 16px 50px rgba(0,0,0,.2);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);color:#fff;transition:background .25s,border-radius .3s,min-height .3s}
+    .scrolled .nav-wrap{top:8px}.scrolled .navbar{min-height:60px;border-radius:17px;background:rgba(12,12,21,.94)}
+    .brand{display:inline-flex;gap:10px;align-items:center;flex:none;font-size:20px;font-weight:700;letter-spacing:-.055em}
+    .brand-logo{width:35px;height:35px;object-fit:contain;filter:brightness(0) invert(1)}
+    .nav-links{display:flex;gap:25px;align-items:center;margin-left:auto}
+    .nav-links a{color:#b8b8c4;font-size:13px;font-weight:500;transition:color .2s;white-space:nowrap}.nav-links a:hover,.nav-links a.current{color:#fff}
+    .nav-right{display:flex;gap:8px;align-items:center}
+    .pill-button,.button{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:11px;border:1px solid transparent;border-radius:999px;cursor:pointer;white-space:nowrap;transition:transform .28s cubic-bezier(.2,.8,.2,1),background .25s,border-color .25s,box-shadow .25s}
+    .pill-button{padding:12px 20px;background:linear-gradient(125deg,#827afe,#6258e6);color:#fff;font-size:13px;font-weight:600;box-shadow:0 6px 20px rgba(105,94,244,.25)}
+    .pill-button:hover,.button:hover{transform:translateY(-2px)}.pill-button:hover{box-shadow:0 8px 26px rgba(105,94,244,.5)}
+    .button{padding:16px 24px;font-size:14px;font-weight:600;min-height:54px}
+    .button-primary{background:#f6f5ff;color:#181526;box-shadow:0 10px 30px rgba(0,0,0,.12)}.button-primary:hover{background:#fff}
+    .button-outline{color:#fff;border-color:rgba(255,255,255,.24);background:rgba(255,255,255,.045)}.button-outline:hover{border-color:#aaa5fe;background:rgba(255,255,255,.1)}
+    .button-dark{background:#13131c;color:#fff}.button-dark:hover{background:#252335}
+    .arrow{font-size:18px;line-height:1;transition:transform .25s}.button:hover .arrow,.pill-button:hover .arrow{transform:translate(3px,-3px)}
+    .menu-toggle{display:none;color:#fff;border:1px solid #ffffff27;border-radius:11px;background:#ffffff12;width:43px;height:43px;align-items:center;justify-content:center;cursor:pointer;font-size:21px}
+    .mobile-menu{display:none;pointer-events:auto}
+    /* DARK CINEMATIC HERO */
+    .hero{position:relative;min-height:835px;background:radial-gradient(ellipse at 83% 42%,#20203f 0%,transparent 40%),linear-gradient(135deg,#0a0b13 2%,#101020 54%,#0a0b12);color:#fff;overflow:hidden;isolation:isolate;padding:188px 0 119px}
+    .hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:74px 74px;opacity:.34;mask-image:linear-gradient(to right,transparent 5%,black 70%);pointer-events:none}
+    .hero::after{content:"";position:absolute;inset:auto 0 0;height:190px;background:linear-gradient(transparent,#0b0c17);pointer-events:none}
+    .glow-one,.glow-two{position:absolute;border-radius:50%;pointer-events:none;filter:blur(40px);z-index:-1;will-change:transform}
+    .glow-one{width:500px;height:500px;top:100px;right:-160px;background:radial-gradient(circle,rgba(107,83,246,.37),transparent 70%);animation:glowmove 16s ease-in-out infinite alternate}
+    .glow-two{width:450px;height:420px;bottom:-180px;left:15%;background:radial-gradient(circle,rgba(67,71,179,.27),transparent 72%);animation:glowmove 20s ease-in-out infinite alternate-reverse}
+    @keyframes glowmove{to{transform:translate(-48px,30px) scale(1.18)}}
+    .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);align-items:center;gap:40px}
+    .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:10px;letter-spacing:.23em;font-weight:700;text-transform:uppercase}
+    .hero-eyebrow{border:1px solid #ffffff26;border-radius:50px;padding:11px 15px;color:#c1c1d0;background:rgba(255,255,255,.045);margin-bottom:30px}
+    .signal{width:7px;height:7px;background:#a9a0ff;border-radius:50%;box-shadow:0 0 15px rgba(169,160,255,.85)}
+    .hero h1{font-weight:500;letter-spacing:-.078em;line-height:.98;font-size:clamp(57px,5.7vw,88px);margin:0 0 29px;max-width:720px}
+    .hero h1 .serif{display:block;color:#c2baff;letter-spacing:-.065em;line-height:1.02}
+    .hero-description{color:#aaaab9;font-size:16px;line-height:1.85;max-width:485px;margin:0 0 31px}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+    .hero-proofline{display:flex;flex-wrap:wrap;align-items:center;gap:18px;margin-top:40px;font-size:11px;letter-spacing:.015em;color:#b2b1c2}
+    .proof-point{display:flex;align-items:center;gap:8px}.proof-point i{display:grid;place-items:center;width:22px;height:22px;border:1px solid #ffffff30;border-radius:50%;font-style:normal;font-size:12px;color:#c4bbff}
+    .hero-visual{position:relative;height:570px;display:flex;justify-content:center;align-items:center;transform-style:preserve-3d;perspective:1000px}
+    .visual-halo{position:absolute;width:485px;height:485px;max-width:100%;border:1px solid #ffffff19;border-radius:50%;background:radial-gradient(circle,rgba(107,93,247,.2),rgba(85,74,191,.06) 44%,transparent 70%);box-shadow:0 0 110px rgba(108,93,248,.2);transform:rotateX(12deg)}
+    .visual-halo:before,.visual-halo:after{content:"";position:absolute;inset:38px;border:1px solid #ffffff16;border-radius:50%}.visual-halo:after{inset:100px}
+    .phone-scene{position:relative;z-index:1;transform:rotate(-6deg) translateY(5px);transition:transform .32s cubic-bezier(.18,.68,.22,1);will-change:transform}
+    .phone{position:relative;width:264px;height:534px;background:#08080f;border:7px solid #20212c;border-radius:43px;padding:9px;box-shadow:0 50px 85px rgba(0,0,0,.56),0 0 0 2px #5657657d,inset 0 0 0 1px #fefefe29;overflow:hidden}
+    .phone:after{position:absolute;inset:0;content:"";border-radius:38px;box-shadow:inset 0 1px 0 #ffffff5a;pointer-events:none}
+    .phone-screen{position:relative;width:100%;height:100%;overflow:hidden;background:linear-gradient(160deg,#161721,#08080b);border-radius:31px}
+    .phone-screen img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s ease;filter:saturate(.8)}
+    .phone-screen img.active{opacity:1}
+    .phone-notch{position:absolute;top:15px;left:50%;transform:translateX(-50%);width:90px;height:24px;background:#08080d;border-radius:30px;z-index:5}
+    .phone-caption{position:absolute;z-index:2;inset:auto 0 0;padding:50px 19px 22px;background:linear-gradient(transparent,#0a0a0ef5)}
+    .phone-caption small{display:block;font-size:9px;letter-spacing:.18em;color:#c7c2ff;font-weight:700;margin-bottom:7px}
+    .phone-caption strong{display:block;font-size:16px;font-weight:500;color:#fff;letter-spacing:-.025em}
+    .float-card{position:absolute;z-index:3;padding:17px 18px;border:1px solid #ffffff38;border-radius:17px;background:linear-gradient(130deg,rgba(255,255,255,.16),rgba(255,255,255,.055));backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);box-shadow:0 22px 60px #0004;color:#fff;animation:cardfloat 6s ease-in-out infinite;max-width:211px}
+    @keyframes cardfloat{50%{transform:translateY(-13px)}}
+    .float-left{left:-6%;top:19%;animation-delay:-2s}.float-right{right:-4%;bottom:16%;animation-delay:-4s}
+    .float-card .mini-tag{display:inline-flex;gap:8px;align-items:center;color:#c4bedc;font-size:10px;letter-spacing:.11em;text-transform:uppercase;margin-bottom:8px}
+    .float-card .mini-tag i{width:7px;height:7px;border-radius:50%;background:#a9a2fc;box-shadow:0 0 12px #a9a2fc}
+    .float-card strong{display:block;font-weight:500;font-size:15px;letter-spacing:-.028em;line-height:1.35}.float-card p{font-size:11px;line-height:1.4;margin:6px 0 0;color:#c2c0cd}
+    .hero-bottom{position:absolute;z-index:2;bottom:30px;left:0;right:0;display:flex;align-items:center;justify-content:space-between;font-size:10px;color:#84859a;letter-spacing:.17em;text-transform:uppercase}
+    .scroll-cue{display:inline-flex;align-items:center;gap:11px}.scroll-cue span{width:21px;height:31px;border-radius:14px;border:1px solid #ffffff50;position:relative}.scroll-cue span::before{content:"";width:3px;height:7px;border-radius:5px;background:#fff;position:absolute;left:8px;top:6px;animation:scrolldot 1.7s ease infinite}@keyframes scrolldot{to{transform:translateY(10px);opacity:0}}
+    /* SECTION SYSTEM */
+    .section{padding:119px 0}.section-tag{font-size:10px;letter-spacing:.23em;text-transform:uppercase;color:#7873ba;font-weight:700;margin:0 0 18px}.section-heading{font-size:clamp(41px,4.4vw,65px);letter-spacing:-.068em;line-height:1.07;font-weight:500;margin:0}.section-heading .serif{color:#a2a1b0}
+    .section-copy{font-size:15px;line-height:1.8;color:#777886;max-width:490px;margin:22px 0 0}.center{text-align:center}.center .section-copy{margin-inline:auto}
+    .split-head{display:flex;align-items:end;justify-content:space-between;gap:35px;margin-bottom:45px}.split-head .section-copy{max-width:375px;margin:0 0 5px}
+    .ribbon{background:#14141f;color:#aaaab8;border-top:1px solid #ffffff0d;border-bottom:1px solid #ffffff0d;overflow:hidden;white-space:nowrap;padding:18px 0}.ribbon-track{display:flex;gap:65px;align-items:center;min-width:max-content;animation:marquee 32s linear infinite}.ribbon-track span{font-size:11px;letter-spacing:.23em;font-weight:600;text-transform:uppercase}.ribbon-track b{font-size:19px;color:#7e75f7;font-weight:400}@keyframes marquee{to{transform:translateX(-50%)}}
+    /* SERVICES */
+    .services{background:#f7f7f8}.service-grid{display:grid;grid-template-columns:1.15fr 1fr 1fr;gap:16px}
+    .service-card{min-height:330px;padding:31px;border:1px solid #e8e8ed;border-radius:25px;background:#fff;position:relative;overflow:hidden;box-shadow:0 12px 35px rgba(15,15,26,.035);transition:transform .3s,border-color .3s,box-shadow .3s}
+    .service-card:hover{transform:translateY(-6px);border-color:#c9c5f9;box-shadow:0 19px 50px rgba(25,20,60,.09)}
+    .service-card.featured{background:#171724;color:#fff;border-color:#171724}
+    .service-card.featured:after{content:"";position:absolute;width:250px;height:250px;right:-95px;top:-100px;border-radius:50%;background:radial-gradient(circle,rgba(126,115,255,.42),transparent 70%)}
+    .icon-box{display:grid;place-items:center;width:49px;height:49px;border-radius:15px;background:#f1f0ff;border:1px solid #e2dfff;color:#7268e9;font-size:22px;margin-bottom:66px}.featured .icon-box{background:#ffffff15;border-color:#ffffff21;color:#b9b2ff}
+    .service-card h3{font-size:22px;line-height:1.17;letter-spacing:-.047em;font-weight:500;margin:0 0 12px;position:relative;z-index:1}
+    .service-card p{font-size:13px;line-height:1.72;color:#777886;margin:0;position:relative;z-index:1}.service-card.featured p{color:#b7b7c9}
+    .service-foot{display:flex;justify-content:space-between;align-items:center;margin-top:25px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:#9995cb;position:relative;z-index:1}
+    /* STEPS */
+    .how{background:#fff}.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:17px;margin-top:58px}
+    .step{padding:27px 23px 30px;border:1px solid #e7e7ec;border-radius:22px;background:#fcfcfd;min-height:253px;position:relative}
+    .step-number{font-family:var(--serif);font-style:italic;font-size:43px;line-height:1;color:#b4b0eb}.step-line{height:1px;background:#e8e7ed;margin:23px 0 21px}.step h3{font-size:18px;font-weight:500;letter-spacing:-.035em;margin:0 0 12px}.step p{font-size:12px;color:#7c7d89;line-height:1.75;margin:0}
+    /* SHOWCASE */
+    .showcase{background:#10101a;color:#fff;position:relative;overflow:hidden}.showcase:before{content:"";pointer-events:none;position:absolute;inset:0;background:radial-gradient(ellipse at 90% 20%,#34305566,transparent 49%)}
+    .showcase .section-heading{color:#fff}.showcase .section-copy{color:#aaaabb}.showcase .section-tag{color:#b9b2ff}
+    .showcase-panel{position:relative;display:grid;grid-template-columns:1fr .85fr;min-height:434px;border:1px solid #ffffff1f;border-radius:28px;background:linear-gradient(125deg,#202030,#141420);overflow:hidden;margin-top:48px}
+    .showcase-visual{position:relative;overflow:hidden;min-height:430px;background:radial-gradient(circle at center,#27233b,#161623 72%);display:grid;place-items:center}
+    .showcase-visual:before{content:"";width:370px;height:370px;position:absolute;border-radius:50%;border:1px solid #ffffff26;box-shadow:0 0 0 57px #ffffff08,0 0 0 114px #ffffff05}
+    .screenshot-stack{position:relative;width:290px;height:315px;transform:rotate(-6deg)}
+    .screenshot{position:absolute;width:234px;height:295px;left:26px;top:12px;border:5px solid #313142;border-radius:16px;background:#161622;box-shadow:0 35px 60px #0008;overflow:hidden}
+    .screenshot img{width:100%;height:100%;object-fit:cover}.screenshot-back{transform:translate(38px,-25px) rotate(12deg);opacity:.56}.screenshot-front{transform:translate(-18px,22px) rotate(-1deg)}
+    .showcase-info{padding:60px 54px 50px;display:flex;flex-direction:column;justify-content:center}
+    .showcase-label{display:inline-flex;gap:8px;align-items:center;color:#bbb5ff;font-size:10px;text-transform:uppercase;letter-spacing:.17em;margin-bottom:22px}.showcase-info h3{font-size:39px;letter-spacing:-.063em;line-height:1.12;font-weight:500;margin:0 0 21px}.showcase-info h3 .serif{color:#c4bdfd}
+    .showcase-info p{color:#a4a3b3;font-size:14px;line-height:1.85;margin:0 0 27px}
+    .showcase-actions{display:flex;gap:10px;flex-wrap:wrap}.showcase-actions .button{min-height:46px;padding:11px 18px;font-size:12px}
+    .note{font-size:11px;color:#9391a4;line-height:1.7;margin:20px 0 0}
+    /* TESTIMONIAL */
+    .testimonial{background:#f7f7f8}.video-card{margin-top:47px;display:grid;grid-template-columns:1.1fr .9fr;min-height:350px;background:#fff;border:1px solid #e9e9ef;border-radius:28px;overflow:hidden}
+    .video-preview{position:relative;display:grid;place-items:center;min-height:349px;background:radial-gradient(circle at 30% 20%,#545084,#171822 70%);color:#fff;cursor:pointer;border:0;text-align:center;overflow:hidden}
+    .video-preview:before{content:"";position:absolute;inset:0;background-image:linear-gradient(#ffffff09 1px,transparent 1px),linear-gradient(90deg,#ffffff09 1px,transparent 1px);background-size:45px 45px}
+    .play-icon{position:relative;display:grid;place-items:center;width:76px;height:76px;border-radius:50%;border:1px solid #ffffff63;background:#ffffff20;backdrop-filter:blur(10px);font-size:27px;transition:transform .25s}.video-preview:hover .play-icon{transform:scale(1.08)}
+    .video-preview iframe{width:100%;height:100%;position:absolute;inset:0;border:0}
+    .video-side{display:flex;flex-direction:column;justify-content:center;padding:43px}.video-side blockquote{font-size:clamp(25px,3vw,37px);letter-spacing:-.05em;line-height:1.17;font-weight:500;margin:0 0 25px}.video-side p{font-size:13px;line-height:1.7;color:#777886;margin:0}
     /* ABOUT */
-    #about{padding:8rem 1.5rem;background:var(--bg)}
-    .about-in{max-width:72rem;margin:0 auto;display:grid;grid-template-columns:1fr;gap:5rem;align-items:center}
-    @media(min-width:768px){.about-in{grid-template-columns:1fr 1fr}}
-    .about-img{aspect-ratio:4/5;background:#e4e4e7;border-radius:3rem;overflow:hidden;position:relative;box-shadow:0 25px 50px -12px rgba(0,0,0,.25)}
-    .about-img img{width:100%;height:100%;object-fit:cover;transition:transform 1s}
-    .about-img:hover img{transform:scale(1.04)}
-    .about-badge{position:absolute;bottom:2.5rem;left:2.5rem;color:#fff}
-    .about-role{font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;font-weight:700;opacity:.8;margin-bottom:.25rem}
-    .about-name{font-size:1.875rem;font-weight:500}
-    .about-grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.2),transparent)}
-    .about-h2{font-size:clamp(2rem,3.5vw,3.125rem);font-weight:500;margin-bottom:2rem;line-height:1.1}
-    .about-body{display:flex;flex-direction:column;gap:2rem;color:#52525b;line-height:1.7;font-size:1.125rem}
-    .about-quote{font-family:var(--serif);font-style:italic;font-size:1.875rem;color:rgba(0,0,0,.9);letter-spacing:-.01em;line-height:1.3}
-    .corner-tl{position:absolute;top:-1.5rem;left:-1.5rem;width:4rem;height:4rem;border-top:3px solid rgba(0,0,0,.1);border-left:3px solid rgba(0,0,0,.1);border-radius:.75rem 0 0 0}
-    .corner-br{position:absolute;bottom:-1.5rem;right:-1.5rem;width:4rem;height:4rem;border-bottom:3px solid rgba(0,0,0,.1);border-right:3px solid rgba(0,0,0,.1);border-radius:0 0 .75rem 0}
-    .about-pos{position:relative}
-
+    .about{background:#fff}.about-grid{display:grid;grid-template-columns:.87fr 1.13fr;align-items:center;gap:94px}
+    .about-art{position:relative;min-height:500px;border-radius:27px;background:linear-gradient(145deg,#141421,#383551);display:grid;place-items:center;overflow:hidden}
+    .about-art:before{content:"";position:absolute;width:370px;height:370px;border-radius:50%;background:radial-gradient(circle,#9a88e844,#6152b411 58%,transparent 74%);box-shadow:0 0 0 55px #ffffff06,0 0 0 109px #ffffff05}
+    .about-monogram{position:relative;font-family:var(--serif);font-style:italic;color:#e9e4ff;font-size:175px;letter-spacing:-.08em;line-height:1;transform:rotate(-9deg)}
+    .about-art-label{position:absolute;bottom:30px;left:30px;right:30px;border-top:1px solid #ffffff32;padding-top:17px;display:flex;justify-content:space-between;color:#d4d1e7;font-size:10px;letter-spacing:.2em;text-transform:uppercase}
+    .about-paras{color:#747582;font-size:14px;line-height:1.92;margin-top:27px}.about-paras p{margin:0 0 16px}.about-quote{border-left:2px solid #a99cff;padding-left:19px;margin:30px 0;font-family:var(--serif);font-size:32px;font-style:italic;line-height:1.2;letter-spacing:-.025em}
     /* FAQ */
-    #faq{padding:8rem 1.5rem;background:#fff}
-    .faq-in{max-width:72rem;margin:0 auto}
-    .faq-h2{font-size:2.5rem;font-weight:500;text-align:center;text-decoration:underline;text-decoration-color:#f4f4f5;text-decoration-thickness:6px;text-underline-offset:.5rem;margin-bottom:4rem}
-    .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem 2.5rem;align-items:start}
-    @media(max-width:767px){.faq-grid{grid-template-columns:1fr}}
-    .faq-col{display:flex;flex-direction:column;gap:1rem}
-    .faq-item{background:var(--bg);border:1px solid #ececec;border-radius:1.5rem;overflow:hidden;cursor:pointer;transition:border-color .3s,box-shadow .3s}
-    .faq-item:hover,.faq-item.open{border-color:#d4d4d8;box-shadow:0 4px 20px rgba(0,0,0,.06)}
-    .faq-hdr{padding:1.375rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;user-select:none}
-    .faq-q{font-size:.9375rem;font-weight:500;color:#000;line-height:1.4;flex:1}
-    .faq-chev{flex-shrink:0;width:1.75rem;height:1.75rem;border-radius:50%;background:#fff;border:1px solid #e4e4e7;display:flex;align-items:center;justify-content:center;color:#71717a;transition:transform .4s,background .25s,border-color .25s}
-    .faq-item.open .faq-chev{transform:rotate(180deg);background:#000;border-color:#000;color:#fff}
-    .faq-body{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.4,0,.2,1)}
-    .faq-item.open .faq-body{max-height:20rem}
-    .faq-ans{padding:1.125rem 1.5rem 1.375rem;font-size:.875rem;color:#71717a;line-height:1.65;border-top:1px solid #f0f0f0}
-
-    /* CTA */
-    #cta{padding:8rem 1.5rem;background:var(--bg)}
-    .cta-box{max-width:56rem;margin:0 auto;background:#fff;border:1px solid #f4f4f5;border-radius:3rem;padding:4rem;text-align:center;position:relative;overflow:hidden;box-shadow:0 25px 50px -12px rgba(0,0,0,.25)}
-    .cta-hover{position:absolute;inset:0;background:#fafafa;opacity:0;transition:opacity 1s;pointer-events:none}
-    .cta-box:hover .cta-hover{opacity:1}
-    .cta-h2{font-size:clamp(2rem,4vw,3.125rem);font-weight:500;margin-bottom:1.5rem;position:relative;z-index:1}
-    .cta-sub{color:#71717a;font-size:1.125rem;margin-bottom:3rem;position:relative;z-index:1;max-width:28rem;margin-left:auto;margin-right:auto;line-height:1.6}
-    .cta-wrap{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:1rem}
-    .cta-email{font-size:.8125rem;color:#a1a1aa}
-    .cta-email a{color:#71717a;text-decoration:underline;text-decoration-color:#d4d4d8;text-underline-offset:3px;transition:color .2s}
-    .cta-email a:hover{color:#000}
-
-    /* FOOTER */
-    footer{background:#fff;border-top:1px solid #ececec;padding:3rem 0 0}
-    .ft-wrap{max-width:80rem;margin:0 auto;padding:0 2.5rem}
-    @media(max-width:767px){.ft-wrap{padding:0 1.5rem}}
-    .ft-body{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem 5rem;padding-bottom:2.5rem;align-items:start}
-    @media(max-width:767px){.ft-body{grid-template-columns:1fr;gap:2.5rem}}
-    .ft-left{display:flex;flex-direction:column;gap:1.125rem}
-    .ft-logo{display:flex;align-items:center;gap:.5rem;text-decoration:none}
-    .ft-logo-icon{width:2rem;height:2rem;background:#000;border-radius:.5rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-    .ft-logo-text{font-size:1.125rem;font-weight:700;letter-spacing:-.02em;color:#000}
-    .ft-desc{font-size:.9375rem;color:#71717a;line-height:1.6;max-width:21rem}
-    .ft-socials{display:flex;gap:.5rem;margin-top:.25rem}
-    .ft-soc{width:2.125rem;height:2.125rem;border-radius:.625rem;border:1px solid #e4e4e7;background:#fafafa;display:flex;align-items:center;justify-content:center;color:#71717a;text-decoration:none;transition:background .2s,border-color .2s,color .2s,transform .2s}
-    .ft-soc:hover{background:#000;border-color:#000;color:#fff;transform:translateY(-2px)}
-    .ft-right{display:flex;flex-direction:column;gap:1.75rem;align-items:flex-end}
-    @media(max-width:767px){.ft-right{align-items:flex-start}}
-    .ft-tagline{font-family:var(--serif);font-style:italic;font-size:1.625rem;color:#000;letter-spacing:-.01em;line-height:1.3;text-align:right}
-    @media(max-width:767px){.ft-tagline{text-align:left;font-size:1.375rem}}
-    .ft-nav{display:flex;flex-wrap:wrap;gap:.375rem .125rem;list-style:none;justify-content:flex-end}
-    @media(max-width:767px){.ft-nav{justify-content:flex-start}}
-    .ft-nav a{font-size:.875rem;font-weight:500;color:#71717a;text-decoration:none;padding:.3rem .75rem;border-radius:9999px;transition:color .2s,background .2s;display:inline-block}
-    .ft-nav a:hover{color:#000;background:#f4f4f5}
-    .ft-contact{display:inline-flex;align-items:center;gap:.5rem;padding:.5rem 1.125rem;border:1px solid #e4e4e7;border-radius:9999px;font-size:.8125rem;color:#71717a;text-decoration:none;background:#fafafa;font-weight:500;transition:all .2s;white-space:nowrap}
-    .ft-contact:hover{border-color:#000;color:#000;background:#fff;transform:translateY(-1px)}
-    .ft-dot{width:.4rem;height:.4rem;border-radius:50%;background:#22c55e;box-shadow:0 0 0 2px rgba(34,197,94,.2);animation:pulse 2s infinite}
-    .ft-bottom{border-top:1px solid #f0f0f0;padding:1.125rem 0;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
-    .ft-copy{font-size:.75rem;color:#b0b0b0;font-weight:500;letter-spacing:.04em}
-    .ft-legal{display:flex;gap:1.5rem;list-style:none}
-    .ft-legal a{font-size:.75rem;color:#b0b0b0;text-decoration:none;font-weight:500;letter-spacing:.04em;transition:color .2s}
-    .ft-legal a:hover{color:#000}
-
-    /* FAB */
-    .fab{position:fixed;bottom:1.75rem;right:1.75rem;width:4.5rem;height:4.5rem;border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:200;background:linear-gradient(160deg,#7289f7 0%,#5865f2 45%,#4752c4 100%);box-shadow:0 0 0 1px rgba(88,101,242,.45),0 4px 16px rgba(88,101,242,.55),0 10px 40px rgba(88,101,242,.35),inset 0 1px 0 rgba(255,255,255,.22);transition:transform .25s,box-shadow .25s,background .25s;overflow:hidden;text-decoration:none}
-    .fab::before{content:'';position:absolute;top:0;left:0;right:0;height:48%;background:linear-gradient(to bottom,rgba(255,255,255,.16),transparent);border-radius:50% 50% 0 0;pointer-events:none}
-    .fab:hover{transform:translateY(-3px) scale(1.04);background:linear-gradient(160deg,#8296ff 0%,#6475f5 45%,#5562d4 100%);box-shadow:0 0 0 1px rgba(88,101,242,.55),0 6px 24px rgba(88,101,242,.7),0 14px 48px rgba(88,101,242,.5),inset 0 1px 0 rgba(255,255,255,.28)}
-    @media(max-width:639px){.fab{width:4rem;height:4rem;bottom:1.25rem;right:1.25rem}}
-
-    @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
+    .faq{background:#f6f6f8}.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 18px;margin-top:54px;align-items:start}.faq-column{display:grid;gap:12px}
+    .faq details{background:#fff;border:1px solid #e7e7ee;border-radius:16px;overflow:hidden;transition:border-color .2s,box-shadow .2s}.faq details[open]{border-color:#ccc9e9;box-shadow:0 9px 26px #1a194b0a}
+    .faq summary{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:23px;list-style:none;cursor:pointer;font-size:13px;font-weight:600;line-height:1.5}.faq summary::-webkit-details-marker{display:none}
+    .faq summary:after{content:'+';width:27px;height:27px;display:grid;place-items:center;flex:none;border-radius:50%;background:#f1f0f9;color:#6e66d9;font-size:20px;font-weight:400;transition:transform .25s}.faq details[open] summary:after{transform:rotate(45deg)}
+    .faq .answer{border-top:1px solid #efeff3;margin:0 23px;padding:17px 0 23px;color:#7a7b88;font-size:13px;line-height:1.85}
+    /* CTA + FOOTER */
+    .closing{background:#f6f6f8;padding:22px 0 118px}.cta-card{position:relative;isolation:isolate;text-align:center;overflow:hidden;border-radius:32px;padding:97px 30px 93px;color:#fff;background:radial-gradient(ellipse at 49% 140%,#4d3b9d 0%,transparent 55%),linear-gradient(125deg,#161522,#202037)}
+    .cta-card:before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(circle at 50% 0%,#8073c533,transparent 64%)}
+    .cta-card .section-tag{color:#c0b8ff}.cta-card h2{font-size:clamp(45px,5.2vw,72px);font-weight:500;line-height:1.06;letter-spacing:-.073em;margin:0 0 22px}.cta-card h2 .serif{color:#c3bafe}.cta-card p{color:#b6b4c7;font-size:14px;line-height:1.8;margin:0 auto 32px;max-width:455px}
+    .footer{background:#0c0d15;color:#fff;padding:76px 0 26px}.footer-main{display:flex;justify-content:space-between;gap:40px;align-items:start}.footer .brand{margin-bottom:19px}.footer-about{max-width:340px}.footer-about p{font-size:13px;color:#9294a5;line-height:1.85;margin:0}
+    .footer-nav{display:flex;flex-wrap:wrap;gap:26px;justify-content:flex-end;max-width:530px}.footer-nav a{color:#aaaaba;font-size:12px;transition:color .2s}.footer-nav a:hover{color:#fff}
+    .footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:65px;padding-top:22px;border-top:1px solid #ffffff1a;color:#77798e;font-size:11px}.footer-bottom a:hover{color:#fff}
+    .footer-watermark{font-size:clamp(82px,15vw,225px);font-weight:700;text-align:center;line-height:1;letter-spacing:-.09em;color:#ffffff06;margin:56px 0 -30px;user-select:none;pointer-events:none;overflow:hidden}
+    .floating-discord{position:fixed;right:25px;bottom:23px;z-index:100;display:grid;place-items:center;width:57px;height:57px;border-radius:20px;background:linear-gradient(150deg,#8175ff,#5950db);color:#fff;box-shadow:0 8px 26px #4c40c05c;border:1px solid #b9afff80;transition:transform .25s}.floating-discord:hover{transform:translateY(-4px)}.floating-discord svg{width:28px;height:24px}
+    .mobile-cta{display:none}
+    /* MOTION */
+    .reveal{opacity:0;transform:translate3d(0,28px,0);filter:blur(5px);transition:opacity .85s ease,transform .85s cubic-bezier(.2,.75,.2,1),filter .85s ease}.reveal.visible{opacity:1;transform:none;filter:none}
+    .hero .reveal{transition-delay:.1s}.hero .hero-visual.reveal{transition-delay:.25s}
+    @media(max-width:1080px){.nav-links{gap:15px}.hero h1{font-size:clamp(52px,6vw,76px)}.float-left{left:-8%}.float-right{right:-9%}.service-card{padding:24px}.about-grid{gap:50px}}
+    @media(max-width:900px){.nav-links{display:none}.menu-toggle{display:flex}.mobile-menu{position:absolute;top:76px;left:26px;right:26px;display:none;flex-direction:column;padding:15px;border-radius:19px;background:#151522f5;border:1px solid #ffffff30;box-shadow:0 18px 40px #0009;backdrop-filter:blur(24px)}.mobile-menu.open{display:flex}.mobile-menu a{padding:13px 12px;color:#e0deed;font-size:14px;border-radius:10px}.mobile-menu a:hover{background:#ffffff12}.hero{padding:165px 0 100px}.hero-grid{grid-template-columns:1fr;text-align:center;gap:18px}.hero-copy{display:flex;flex-direction:column;align-items:center}.hero-description{max-width:600px}.hero h1{max-width:780px}.hero-visual{height:550px}.hero-proofline{justify-content:center}.float-left{left:12%}.float-right{right:10%}.hero-bottom{bottom:22px}.service-grid{grid-template-columns:repeat(2,1fr)}.service-card.featured{grid-row:span 2}.service-card{min-height:290px}.steps-grid{grid-template-columns:repeat(2,1fr)}.about-grid{grid-template-columns:1fr;gap:42px}.about-art{min-height:350px}.about-monogram{font-size:140px}.showcase-info{padding:32px}.showcase-info h3{font-size:32px}}
+    @media(max-width:640px){html{scroll-padding-top:87px}.container{width:min(calc(100% - 36px),var(--shell))}.nav-wrap{top:11px}.navbar{border-radius:17px;padding:7px 8px 7px 13px;min-height:56px}.brand{font-size:19px}.brand-logo{width:30px;height:30px}.nav-right>.pill-button{display:none}.mobile-menu{left:18px;right:18px;top:66px}.hero{padding:136px 0 81px;min-height:auto}.hero-grid{gap:16px}.hero-eyebrow{margin-bottom:24px;font-size:9px;padding:10px 13px}.hero h1{font-size:clamp(48px,12vw,69px);letter-spacing:-.075em;margin-bottom:22px}.hero-description{font-size:14px;line-height:1.8;margin-bottom:23px}.hero-actions{width:100%;justify-content:center}.hero-actions .button{font-size:12px;min-height:49px;padding:12px 17px}.hero-proofline{gap:11px;margin-top:27px;font-size:10px}.hero-visual{height:437px}.visual-halo{width:350px;height:350px}.phone{width:192px;height:388px;border-radius:32px;border-width:5px;padding:7px}.phone-screen{border-radius:24px}.phone-notch{top:12px;width:63px;height:17px}.phone-caption{padding:35px 13px 16px}.phone-caption strong{font-size:12px}.phone-caption small{font-size:8px}.float-card{padding:12px;max-width:151px;border-radius:12px}.float-card .mini-tag{font-size:8px;margin-bottom:5px}.float-card strong{font-size:11px}.float-card p{font-size:9px}.float-left{left:0;top:17%}.float-right{right:0;bottom:18%}.hero-bottom{display:none}.section{padding:77px 0}.section-tag{font-size:9px}.section-heading{font-size:clamp(37px,10vw,51px)}.section-copy{font-size:13px;margin-top:17px}.split-head{display:block;margin-bottom:32px}.split-head .section-copy{margin-top:17px}.ribbon{padding:13px 0}.ribbon-track{gap:35px}.ribbon-track span{font-size:9px}.service-grid{grid-template-columns:1fr}.service-card.featured{grid-row:auto}.service-card{min-height:245px;padding:25px}.icon-box{margin-bottom:36px}.service-card h3{font-size:22px}.steps-grid{grid-template-columns:1fr 1fr;gap:10px;margin-top:34px}.step{padding:19px 16px 21px;min-height:245px}.step-number{font-size:35px}.step-line{margin:15px 0 16px}.step h3{font-size:15px}.step p{font-size:11px}.showcase-panel{grid-template-columns:1fr;margin-top:32px}.showcase-visual{min-height:300px}.screenshot-stack{transform:scale(.82) rotate(-6deg)}.showcase-info{padding:29px 25px 34px}.showcase-info h3{font-size:32px}.testimonial .video-card{grid-template-columns:1fr}.video-preview{min-height:235px}.video-side{padding:27px}.video-side blockquote{font-size:28px}.about-art{min-height:320px}.about-grid{gap:35px}.about-monogram{font-size:125px}.about-art-label{left:20px;right:20px;bottom:20px}.about-quote{font-size:29px}.faq-grid{grid-template-columns:1fr;margin-top:32px}.faq summary{padding:19px;font-size:12px}.faq .answer{margin:0 19px;font-size:12px}.closing{padding:0 0 70px}.cta-card{border-radius:25px;padding:67px 21px}.cta-card h2{font-size:45px}.cta-card p{font-size:13px}.footer{padding:57px 0 18px}.footer-main{display:block}.footer-nav{justify-content:flex-start;gap:17px 23px;margin-top:33px}.footer-watermark{margin:40px 0 -15px}.footer-bottom{margin-top:42px}.floating-discord{display:none}.mobile-cta{position:fixed;display:block;bottom:0;left:0;right:0;z-index:99;padding:10px max(16px,env(safe-area-inset-right)) calc(10px + env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left));background:linear-gradient(transparent,#0b0b14 25%);pointer-events:none}.mobile-cta a{display:flex;width:100%;align-items:center;justify-content:center;border-radius:14px;padding:13px 20px;background:linear-gradient(120deg,#8378fb,#5b51df);color:#fff;font-size:13px;font-weight:600;box-shadow:0 5px 15px #120e3090;pointer-events:auto}.footer-bottom{padding-bottom:67px}}
+    @media(max-width:375px){.hero h1{font-size:45px}.float-left{left:-6%}.float-right{right:-6%}.hero-visual{height:420px}.phone{transform:scale(.93)}.steps-grid{grid-template-columns:1fr}.step{min-height:0}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}.reveal{opacity:1;filter:none;transform:none}.phone-scene{will-change:auto}}
   </style>
 </head>
 <body>
-
-<!-- NAV -->
-<nav>
-  <div class="nav-in">
-    <a class="nav-logo" href="#home">
-      <img src="https://i.ibb.co/6JZQNgK9/file-00000000289c720695b514839e99987b.png" alt="Premonly"/>
-      <span>Premonly</span>
-    </a>
-    <div class="nav-links">
-      <a class="nav-link" href="#home">Home</a>
-      <a class="nav-link" href="#testimonials">Testimonials</a>
-      <a class="nav-link" href="#services">Services</a>
-      <a class="nav-link" href="#results">Results</a>
-      <a class="nav-link" href="#about">About</a>
-      <a class="nav-link" href="#faq">FAQ</a>
-    </div>
-    <button class="nav-ham" id="hamBtn" aria-label="Menu">
-      <svg id="hamIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
-    </button>
-  </div>
-  <div class="mob-menu" id="mobMenu">
-    <a href="#home">Home</a>
-    <a href="#testimonials">Testimonials</a>
-    <a href="#services">Services</a>
-    <a href="#results">Results</a>
-    <a href="#about">About</a>
-    <a href="#faq">FAQ</a>
-    <a href="https://discord.gg/sxxYK4DYwJ" class="btn btn-discord" style="width:100%;justify-content:center;margin-top:.5rem">JOIN DISCORD</a>
-  </div>
-</nav>
-
-<!-- HERO -->
-<section id="home">
-  <div class="hero-in">
-    <div class="hero-left fade">
-      <div class="badge"><span class="badge-dot"></span>Trusted by 100+ Creators</div>
-      <h1 class="hero-h1">
-        Premium YouTube<br>
-        <span class="serif" style="color:#a1a1aa">Channels.</span><br>
-        Transparent <span class="serif" style="opacity:.7">Deals.</span><br>
-        Proven Results.
-      </h1>
-      <p class="hero-sub">We help creators <strong style="color:#000;font-weight:500">buy &amp; sell</strong> pre-monetized YouTube channels and provide expert support for reused content monetization appeals. Safe. Transparent. Reliable.</p>
-      <div class="hero-btns">
-        <a href="https://discord.gg/sxxYK4DYwJ" class="btn btn-discord" style="padding:1rem 2.5rem;font-size:1rem">
-          <svg width="20" height="20" viewBox="0 0 71 55" fill="white"><path d="M60.105 4.898A58.55 58.55 0 0 0 45.653.415a.22.22 0 0 0-.233.11 40.784 40.784 0 0 0-1.8 3.697c-5.456-.817-10.886-.817-16.23 0a37.37 37.37 0 0 0-1.827-3.697.228.228 0 0 0-.233-.11 58.386 58.386 0 0 0-14.452 4.483.207.207 0 0 0-.095.082C1.578 18.73-.944 32.144.293 45.39a.244.244 0 0 0 .093.166c6.073 4.46 11.955 7.167 17.729 8.962a.23.23 0 0 0 .249-.082 42.08 42.08 0 0 0 3.627-5.9.225.225 0 0 0-.123-.312 38.772 38.772 0 0 1-5.539-2.638.228.228 0 0 1-.022-.378c.372-.279.744-.569 1.1-.862a.22.22 0 0 1 .23-.03c11.619 5.304 24.198 5.304 35.68 0a.219.219 0 0 1 .232.027c.356.293.728.586 1.103.865a.228.228 0 0 1-.02.378 36.384 36.384 0 0 1-5.54 2.635.226.226 0 0 0-.121.315 47.249 47.249 0 0 0 3.624 5.897.225.225 0 0 0 .249.084c5.801-1.795 11.684-4.502 17.757-8.961a.228.228 0 0 0 .092-.164c1.48-15.315-2.48-28.618-10.497-40.412a.18.18 0 0 0-.093-.084zM23.725 37.307c-3.497 0-6.381-3.211-6.381-7.156 0-3.944 2.826-7.156 6.381-7.156 3.583 0 6.438 3.24 6.382 7.156 0 3.945-2.826 7.156-6.382 7.156zm23.593 0c-3.498 0-6.382-3.211-6.382-7.156 0-3.944 2.826-7.156 6.382-7.156 3.583 0 6.437 3.24 6.381 7.156 0 3.945-2.798 7.156-6.381 7.156z"/></svg>
-          JOIN DISCORD
-        </a>
-        <a href="#services" class="btn btn-secondary" style="padding:1rem 2.5rem;font-size:1rem">Explore Services</a>
-      </div>
-      <div class="hero-trust">
-        <div class="trust-item">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#d4d4d8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><polyline points="9 12 11 14 15 10"/></svg>
-          100% Transparent
-        </div>
-        <div class="trust-item">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#d4d4d8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-          Safe &amp; Secure
-        </div>
-        <div class="trust-item">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#d4d4d8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg>
-          Trusted by Creators
-        </div>
-      </div>
-    </div>
-    <div class="hero-right fade" style="transition-delay:.3s">
-      <div class="phone" style="animation:floatY 4s ease-in-out infinite">
-        <div class="phone-screen" id="phoneScreen"></div>
-        <div class="phone-dots" id="phoneDots"></div>
-        <div class="phone-border"></div>
-        <div class="phone-notch"></div>
-      </div>
-    </div>
-  </div>
+<div class="progress" id="scrollProgress" aria-hidden="true"></div>
+<header class="nav-wrap"><nav class="navbar container" aria-label="Primary navigation">
+  <a class="brand" href="#home" aria-label="Premonly home"><img class="brand-logo" src="https://i.ibb.co/6JZQNgK9/file-00000000289c720695b514839e99987b.png" alt="" width="35" height="35">Premonly</a>
+  <div class="nav-links" id="desktopNav"><a href="#home">Home</a><a href="#services">Services</a><a href="#how">Process</a><a href="#results">Results</a><a href="#about">About</a><a href="#faq">FAQ</a></div>
+  <div class="nav-right"><a class="pill-button" href="https://discord.gg/sxxYK4DYwJ" target="_blank" rel="noopener noreferrer">Join Discord <span class="arrow">↗</span></a><button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">☰</button></div>
+ </nav><div class="mobile-menu" id="mobileMenu"><a href="#home">Home</a><a href="#services">Services</a><a href="#how">Process</a><a href="#results">Results</a><a href="#testimonials">Testimonials</a><a href="#about">About</a><a href="#faq">FAQ</a><a href="https://discord.gg/sxxYK4DYwJ" target="_blank" rel="noopener noreferrer">Join Discord ↗</a></div></header>
+<main>
+<section class="hero" id="home" aria-labelledby="heroHeading">
+ <div class="glow-one"></div><div class="glow-two"></div>
+ <div class="container hero-grid"><div class="hero-copy reveal">
+   <div class="eyebrow hero-eyebrow"><span class="signal"></span> For creators who mean business</div>
+   <h1 id="heroHeading">Premium<br>YouTube channels.<span class="serif">Clearer possibilities.</span></h1>
+   <p class="hero-description">Explore monetized YouTube channels, navigate transparent deals, and get tailored guidance on reused-content appeals. Your next move deserves a better starting point.</p>
+   <div class="hero-actions"><a class="button button-primary" href="https://discord.gg/sxxYK4DYwJ" target="_blank" rel="noopener noreferrer">Join our Discord <span class="arrow">↗</span></a><a class="button button-outline" href="#services">Explore services <span class="arrow">↘</span></a></div>
+   <div class="hero-proofline"><span class="proof-point"><i>✓</i> Clear communication</span><span class="proof-point"><i>✓</i> Guided handover</span><span class="proof-point"><i>✓</i> Appeal support</span></div>
+ </div><div class="hero-visual reveal" id="heroVisual" aria-label="Example gallery of creator-related imagery"><div class="visual-halo"></div>
+  <div class="phone-scene" id="phoneScene"><div class="phone"><div class="phone-screen" id="phoneGallery">
+    <img class="active" src="https://i.ibb.co/hJ4Vvf9V/x.jpg" alt="Example YouTube-related screenshot from the original Premonly site" fetchpriority="high">
+    <img src="https://i.ibb.co/5xgr7vZm/x.jpg" alt="Example screenshot from original Premonly gallery" loading="lazy">
+    <img src="https://i.ibb.co/0phRmQ6k/x.jpg" alt="Example screenshot from original Premonly gallery" loading="lazy">
+    <img src="https://i.ibb.co/cXhLnv97/x.jpg" alt="Example screenshot from original Premonly gallery" loading="lazy">
+    <img src="https://i.ibb.co/spx6GKXR/x.jpg" alt="Example screenshot from original Premonly gallery" loading="lazy">
+    <div class="phone-caption"><small>PREMONLY / GALLERY</small><strong>Real details. Better decisions.</strong></div>
+  </div><div class="phone-notch"></div></div></div>
+  <div class="float-card float-left"><span class="mini-tag"><i></i> Channel sourcing</span><strong>Find the right starting point.</strong><p>Discuss requirements before committing.</p></div>
+  <div class="float-card float-right"><span class="mini-tag"><i></i> Appeal guidance</span><strong>Make a stronger case.</strong><p>Thoughtful, evidence-led support.</p></div>
+ </div></div>
+ <div class="container hero-bottom"><span>PREMONLY / BUILT AROUND CLARITY</span><a class="scroll-cue" href="#services"><span aria-hidden="true"></span> Scroll to explore</a></div>
 </section>
-
-<!-- TESTIMONIALS -->
-<section id="testimonials" style="padding:8rem 1.5rem;background:#fff">
-  <div style="max-width:80rem;margin:0 auto">
-    <div class="fade" style="margin-bottom:3rem">
-      <h2 class="section-label">Voices <span class="serif" style="color:#a1a1aa">from the Field</span></h2>
-    </div>
-    <div class="fade vtc-main" style="transition-delay:.1s">
-      <iframe src="https://www.youtube.com/embed/-UIgptsQ1xY?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&loop=1&playlist=-UIgptsQ1xY" title="Testimonial" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-    </div>
-  </div>
-</section>
-
-<!-- SERVICES / WHY US -->
-<section id="services">
-  <div class="sec-in">
-    <div class="sec-header fade">
-      <div class="sec-badge"><span class="sec-badge-dot"></span>Why Choose Us</div>
-      <h2 class="sec-h2">Why Choose Our <span class="serif" style="color:#a1a1aa">Channels?</span></h2>
-      <p class="sec-sub">Everything you need to start earning immediately with our premium, hand-verified YouTube channels.</p>
-    </div>
-    <div class="cards">
-      <div class="card fade">
-        <div class="card-bloom bloom-red"></div>
-        <div class="icon-wrap icon-red">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-        </div>
-        <p class="card-title">Instant Revenue</p>
-        <p class="card-desc">Start earning from day one with fully monetized, creator-ready YouTube channels.</p>
-        <div class="divider"></div>
-        <div class="bullets">
-          <div class="bullet"><span class="bullet-dot dot-red"></span>Monetization Enabled</div>
-          <div class="bullet"><span class="bullet-dot dot-red"></span>Shorts Monetized</div>
-          <div class="bullet"><span class="bullet-dot dot-red"></span>Long-Form Revenue Ready</div>
-        </div>
-      </div>
-      <div class="card fade" style="transition-delay:.1s">
-        <div class="card-bloom bloom-blue"></div>
-        <div class="icon-wrap icon-blue">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><polyline points="9 12 11 14 15 10"/></svg>
-        </div>
-        <p class="card-title">100% Safe &amp; Secure</p>
-        <p class="card-desc">All channels are manually verified for compliance, safety, and clean ownership history.</p>
-        <div class="divider"></div>
-        <div class="bullets">
-          <div class="bullet"><span class="bullet-dot dot-blue"></span>Verified Channels</div>
-          <div class="bullet"><span class="bullet-dot dot-blue"></span>Policy Compliant</div>
-          <div class="bullet"><span class="bullet-dot dot-blue"></span>Clean History</div>
-        </div>
-      </div>
-      <div class="card fade" style="transition-delay:.2s">
-        <div class="card-bloom bloom-purple"></div>
-        <div class="icon-wrap icon-purple">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </div>
-        <p class="card-title">Premium Support</p>
-        <p class="card-desc">Direct access to ongoing creator support, setup assistance, and growth guidance.</p>
-        <div class="divider"></div>
-        <div class="bullets">
-          <div class="bullet"><span class="bullet-dot dot-purple"></span>24/7 Assistance</div>
-          <div class="bullet"><span class="bullet-dot dot-purple"></span>Setup Guidance</div>
-          <div class="bullet"><span class="bullet-dot dot-purple"></span>Creator Support</div>
-        </div>
-      </div>
-    </div>
-    <div class="stats fade">
-      <div class="stat"><p class="stat-val">∞</p><p class="stat-lbl">Stock Available</p></div>
-      <div class="stat"><p class="stat-val">100%</p><p class="stat-lbl">Success Rate</p></div>
-      <div class="stat"><p class="stat-val">24/7</p><p class="stat-lbl">Support Available</p></div>
-      <div class="stat"><p class="stat-val">$1M+</p><p class="stat-lbl">Creator Earnings</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- RESULTS / PROOF -->
-<section id="results">
-  <div style="max-width:80rem;margin:0 auto">
-    <div class="fade" style="margin-bottom:3rem">
-      <h2 class="section-label">Proof, <span class="serif" style="color:#a1a1aa">Not Promises</span></h2>
-    </div>
-    <div class="fade proof" id="proofSlider" style="transition-delay:.1s">
-      <div class="proof-overlay"></div>
-      <div class="proof-arrows">
-        <button class="proof-arr" id="proofPrev" aria-label="Previous">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-        </button>
-        <button class="proof-arr" id="proofNext" aria-label="Next">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-        </button>
-      </div>
-      <div class="proof-caption">
-        <div>
-          <p class="proof-lbl" id="proofLbl"></p>
-          <p class="proof-title" id="proofTitle"></p>
-        </div>
-        <div class="proof-dots" id="proofDots"></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="about-in">
-    <div class="fade about-pos">
-      <div class="about-img">
-        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&h=1000&fit=crop" alt="Jibrail Ameen - Founder"/>
-        <div class="about-grad"></div>
-        <div class="about-badge">
-          <p class="about-role">Founder &amp; CEO</p>
-          <p class="about-name">Jibrail Ameen</p>
-        </div>
-      </div>
-      <div class="corner-tl"></div>
-      <div class="corner-br"></div>
-    </div>
-    <div class="fade" style="transition-delay:.2s">
-      <h2 class="about-h2">Building <span class="serif" style="color:#a1a1aa">Trust</span> in a Digital Empire.</h2>
-      <div class="about-body">
-        <p>I've spent a decade navigating the YouTube ecosystem. From managing underground networks to building mainstream channels, the one constant has been the need for <span style="color:#000;font-weight:500;text-decoration:underline;text-decoration-color:#e4e4e7;text-underline-offset:4px">integrity</span>.</p>
-        <p class="about-quote">"We don't just sell channels. We curate digital legacies for the next generation of creators."</p>
-        <p>Premonly was born from a simple observation: transparency is rare in this space. My mission is to fix that, one verified deal at a time.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section id="faq">
-  <div class="faq-in">
-    <div class="fade" style="margin-bottom:4rem">
-      <h2 class="faq-h2">Common Questions</h2>
-    </div>
-    <div class="faq-grid fade" style="transition-delay:.1s">
-      <div class="faq-col" id="faqCol1"></div>
-      <div class="faq-col" id="faqCol2"></div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section id="cta">
-  <div class="fade">
-    <div class="cta-box">
-      <div class="cta-hover"></div>
-      <h2 class="cta-h2">Stop Starting From Zero.<br><span class="serif" style="color:#a1a1aa">Start Already Monetized.</span></h2>
-      <p class="cta-sub" style="margin-bottom:3rem">Premium YouTube channels ready for revenue, growth, and scale — without the years of trial and error.</p>
-      <div class="cta-wrap">
-        <a href="https://discord.gg/sxxYK4DYwJ" class="btn btn-discord" style="padding:1.1rem 2.8rem;font-size:1rem;min-width:260px">
-          <svg width="20" height="20" viewBox="0 0 71 55" fill="white"><path d="M60.105 4.898A58.55 58.55 0 0 0 45.653.415a.22.22 0 0 0-.233.11 40.784 40.784 0 0 0-1.8 3.697c-5.456-.817-10.886-.817-16.23 0a37.37 37.37 0 0 0-1.827-3.697.228.228 0 0 0-.233-.11 58.386 58.386 0 0 0-14.452 4.483.207.207 0 0 0-.095.082C1.578 18.73-.944 32.144.293 45.39a.244.244 0 0 0 .093.166c6.073 4.46 11.955 7.167 17.729 8.962a.23.23 0 0 0 .249-.082 42.08 42.08 0 0 0 3.627-5.9.225.225 0 0 0-.123-.312 38.772 38.772 0 0 1-5.539-2.638.228.228 0 0 1-.022-.378c.372-.279.744-.569 1.1-.862a.22.22 0 0 1 .23-.03c11.619 5.304 24.198 5.304 35.68 0a.219.219 0 0 1 .232.027c.356.293.728.586 1.103.865a.228.228 0 0 1-.02.378 36.384 36.384 0 0 1-5.54 2.635.226.226 0 0 0-.121.315 47.249 47.249 0 0 0 3.624 5.897.225.225 0 0 0 .249.084c5.801-1.795 11.684-4.502 17.757-8.961a.228.228 0 0 0 .092-.164c1.48-15.315-2.48-28.618-10.497-40.412a.18.18 0 0 0-.093-.084zM23.725 37.307c-3.497 0-6.381-3.211-6.381-7.156 0-3.944 2.826-7.156 6.381-7.156 3.583 0 6.438 3.24 6.382 7.156 0 3.945-2.826 7.156-6.382 7.156zm23.593 0c-3.498 0-6.382-3.211-6.382-7.156 0-3.944 2.826-7.156 6.382-7.156 3.583 0 6.437 3.24 6.381 7.156 0 3.945-2.798 7.156-6.381 7.156z"/></svg>
-          JOIN DISCORD
-        </a>
-        <p class="cta-email">or email us at: <a href="mailto:support@premonly.com">support@premonly.com</a></p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="ft-wrap">
-    <div class="ft-body">
-      <div class="ft-left">
-        <a href="#home" class="ft-logo">
-          <div class="ft-logo-icon">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><polygon points="10 15 15 12 10 9 10 15" fill="#fff" stroke="none"/></svg>
-          </div>
-          <span class="ft-logo-text">Premonly</span>
-        </a>
-        <p class="ft-desc">Premium monetized YouTube channels for creators who want to start earning — not start from scratch.</p>
-        <div class="ft-socials">
-          <a href="#" class="ft-soc" aria-label="X / Twitter"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.631zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-          <a href="#" class="ft-soc" aria-label="Instagram"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg></a>
-          <a href="https://discord.gg/sxxYK4DYwJ" class="ft-soc" aria-label="Discord"><svg width="13" height="13" viewBox="0 0 71 55" fill="currentColor"><path d="M60.105 4.898A58.55 58.55 0 0 0 45.653.415a.22.22 0 0 0-.233.11 40.784 40.784 0 0 0-1.8 3.697c-5.456-.817-10.886-.817-16.23 0a37.37 37.37 0 0 0-1.827-3.697.228.228 0 0 0-.233-.11 58.386 58.386 0 0 0-14.452 4.483.207.207 0 0 0-.095.082C1.578 18.73-.944 32.144.293 45.39a.244.244 0 0 0 .093.166c6.073 4.46 11.955 7.167 17.729 8.962a.23.23 0 0 0 .249-.082 42.08 42.08 0 0 0 3.627-5.9.225.225 0 0 0-.123-.312 38.772 38.772 0 0 1-5.539-2.638.228.228 0 0 1-.022-.378c.372-.279.744-.569 1.1-.862a.22.22 0 0 1 .23-.03c11.619 5.304 24.198 5.304 35.68 0a.219.219 0 0 1 .232.027c.356.293.728.586 1.103.865a.228.228 0 0 1-.02.378 36.384 36.384 0 0 1-5.54 2.635.226.226 0 0 0-.121.315 47.249 47.249 0 0 0 3.624 5.897.225.225 0 0 0 .249.084c5.801-1.795 11.684-4.502 17.757-8.961a.228.228 0 0 0 .092-.164c1.48-15.315-2.48-28.618-10.497-40.412a.18.18 0 0 0-.093-.084zM23.725 37.307c-3.497 0-6.381-3.211-6.381-7.156 0-3.944 2.826-7.156 6.381-7.156 3.583 0 6.438 3.24 6.382 7.156 0 3.945-2.826 7.156-6.382 7.156zm23.593 0c-3.498 0-6.382-3.211-6.382-7.156 0-3.944 2.826-7.156 6.382-7.156 3.583 0 6.437 3.24 6.381 7.156 0 3.945-2.798 7.156-6.381 7.156z"/></svg></a>
-          <a href="#" class="ft-soc" aria-label="YouTube"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><polygon points="10 15 15 12 10 9 10 15"/></svg></a>
-        </div>
-      </div>
-      <div class="ft-right">
-        <p class="ft-tagline">Built for creators<br><span style="color:#a1a1aa">who mean business.</span></p>
-        <ul class="ft-nav">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#results">Results</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#faq">FAQ</a></li>
-        </ul>
-        <a href="mailto:support@premonly.com" class="ft-contact">
-          <span class="ft-dot"></span>
-          support@premonly.com
-        </a>
-      </div>
-    </div>
-    <div class="ft-bottom">
-      <span class="ft-copy">© 2025 Premonly. All rights reserved.</span>
-      <ul class="ft-legal">
-        <li><a href="#">Privacy</a></li>
-        <li><a href="#">Terms</a></li>
-        <li><a href="#">Agency</a></li>
-      </ul>
-    </div>
-  </div>
-</footer>
-
-<!-- FAB -->
-<a href="https://discord.gg/sxxYK4DYwJ" class="fab" aria-label="Join Discord" target="_blank" rel="noopener noreferrer">
-  <svg width="26" height="26" viewBox="0 0 71 55" fill="white" style="position:relative;z-index:1"><path d="M60.105 4.898A58.55 58.55 0 0 0 45.653.415a.22.22 0 0 0-.233.11 40.784 40.784 0 0 0-1.8 3.697c-5.456-.817-10.886-.817-16.23 0a37.37 37.37 0 0 0-1.827-3.697.228.228 0 0 0-.233-.11 58.386 58.386 0 0 0-14.452 4.483.207.207 0 0 0-.095.082C1.578 18.73-.944 32.144.293 45.39a.244.244 0 0 0 .093.166c6.073 4.46 11.955 7.167 17.729 8.962a.23.23 0 0 0 .249-.082 42.08 42.08 0 0 0 3.627-5.9.225.225 0 0 0-.123-.312 38.772 38.772 0 0 1-5.539-2.638.228.228 0 0 1-.022-.378c.372-.279.744-.569 1.1-.862a.22.22 0 0 1 .23-.03c11.619 5.304 24.198 5.304 35.68 0a.219.219 0 0 1 .232.027c.356.293.728.586 1.103.865a.228.228 0 0 1-.02.378 36.384 36.384 0 0 1-5.54 2.635.226.226 0 0 0-.121.315 47.249 47.249 0 0 0 3.624 5.897.225.225 0 0 0 .249.084c5.801-1.795 11.684-4.502 17.757-8.961a.228.228 0 0 0 .092-.164c1.48-15.315-2.48-28.618-10.497-40.412a.18.18 0 0 0-.093-.084zM23.725 37.307c-3.497 0-6.381-3.211-6.381-7.156 0-3.944 2.826-7.156 6.381-7.156 3.583 0 6.438 3.24 6.382 7.156 0 3.945-2.826 7.156-6.382 7.156zm23.593 0c-3.498 0-6.382-3.211-6.382-7.156 0-3.944 2.826-7.156 6.382-7.156 3.583 0 6.437 3.24 6.381 7.156 0 3.945-2.798 7.156-6.381 7.156z"/></svg>
-</a>
-
+<div class="ribbon" aria-hidden="true"><div class="ribbon-track"><span>Premium channels</span><b>✦</b><span>Transparent deals</span><b>✦</b><span>Appeal support</span><b>✦</b><span>Guided process</span><b>✦</b><span>Premium channels</span><b>✦</b><span>Transparent deals</span><b>✦</b><span>Appeal support</span><b>✦</b><span>Guided process</span><b>✦</b></div></div>
+<section class="section services" id="services" aria-labelledby="servicesHeading"><div class="container"><div class="split-head reveal"><div><p class="section-tag">01 / What we offer</p><h2 class="section-heading" id="servicesHeading">Not just a channel.<br><span class="serif">A considered move.</span></h2></div><p class="section-copy">From buying and selling to appeal preparation, we focus on helping creators make informed decisions with a clear process.</p></div>
+ <div class="service-grid"><article class="service-card featured reveal"><div class="icon-box" aria-hidden="true">↗</div><h3>Monetized channel sourcing</h3><p>Explore available opportunities with clear conversations about channel details, transfer steps and expectations.</p><div class="service-foot"><span>Explore opportunities</span><span>01 ↗</span></div></article>
+ <article class="service-card reveal"><div class="icon-box" aria-hidden="true">◇</div><h3>Transparent channel deals</h3><p>Buying or selling? Discuss the details, understand the handover process and ask the questions that matter.</p><div class="service-foot"><span>Buy &amp; sell</span><span>02 ↗</span></div></article>
+ <article class="service-card reveal"><div class="icon-box" aria-hidden="true">✳</div><h3>Reused-content appeal support</h3><p>Guidance on explaining your creative process, documenting original work and preparing a clearer monetization appeal.</p><div class="service-foot"><span>Creator guidance</span><span>03 ↗</span></div></article></div>
+</div></section>
+<section class="section how" id="how" aria-labelledby="howHeading"><div class="container"><div class="center reveal"><p class="section-tag">02 / The experience</p><h2 class="section-heading" id="howHeading">A simpler way <span class="serif">forward.</span></h2><p class="section-copy">No complicated funnel. Just a clear conversation followed by the next right step.</p></div><div class="steps-grid"><article class="step reveal"><div class="step-number">01</div><div class="step-line"></div><h3>Start a conversation</h3><p>Join our Discord community and tell us what you're looking for.</p></article><article class="step reveal"><div class="step-number">02</div><div class="step-line"></div><h3>Explore the details</h3><p>Discuss available channels or explain your monetization appeal situation.</p></article><article class="step reveal"><div class="step-number">03</div><div class="step-line"></div><h3>Agree on a plan</h3><p>Review relevant information, terms and next steps before proceeding.</p></article><article class="step reveal"><div class="step-number">04</div><div class="step-line"></div><h3>Move with support</h3><p>Get guidance through the relevant process and follow-up questions.</p></article></div></div></section>
+<section class="section showcase" id="results" aria-labelledby="resultsHeading"><div class="container"><div class="split-head reveal"><div><p class="section-tag">03 / Proof &amp; transparency</p><h2 class="section-heading" id="resultsHeading">Proof should speak.<br><span class="serif">Not promises.</span></h2></div><p class="section-copy">Ask for current, relevant examples and verify the details behind any channel or appeal claim before making a decision.</p></div>
+<div class="showcase-panel reveal"><div class="showcase-visual"><div class="screenshot-stack"><div class="screenshot screenshot-back"><img src="https://i.ibb.co/5xgr7vZm/x.jpg" loading="lazy" alt="Example from the original Premonly screenshot gallery"></div><div class="screenshot screenshot-front"><img src="https://i.ibb.co/hJ4Vvf9V/x.jpg" loading="lazy" alt="Example from the original Premonly screenshot gallery"></div></div></div><div class="showcase-info"><span class="showcase-label">◈ &nbsp; Examples from our gallery</span><h3>See the details.<br><span class="serif">Ask the questions.</span></h3><p>Channel screenshots and past creator examples are a starting point for a conversation, not a performance guarantee. We encourage verifying ownership, monetization status and transfer terms directly.</p><div class="showcase-actions"><a class="button button-primary" href="https://discord.gg/sxxYK4DYwJ" target="_blank" rel="noopener noreferrer">Request details ↗</a><a class="button button-outline" href="#faq">Read FAQ ↓</a></div><p class="note">Gallery images are carried over from the previous website. Specific metrics and outcomes are not independently verified by this redesign.</p></div></div>
+</div></section>
+<section class="section testimonial" id="testimonials" aria-labelledby="testimonialsHeading"><div class="container"><div class="center reveal"><p class="section-tag">04 / Hear the perspective</p><h2 class="section-heading" id="testimonialsHeading">From the <span class="serif">creator side.</span></h2><p class="section-copy">Watch the video featured on the original Premonly website. Decide for yourself what matters most.</p></div><div class="video-card reveal"><button class="video-preview" id="loadVideo" type="button" aria-label="Play Premonly testimonial video"><span class="play-icon" aria-hidden="true">▶</span></button><div class="video-side"><blockquote>Trust is built through the <span class="serif">details.</span></blockquote><p>We believe a useful conversation, straightforward terms and room for your questions say more than inflated numbers ever could.</p></div></div></div></section>
+<section class="section about" id="about" aria-labelledby="aboutHeading"><div class="container about-grid"><div class="about-art reveal" role="img" aria-label="Abstract Premonly brand artwork"><div class="about-monogram">P.</div><div class="about-art-label"><span>Premonly studio</span><span>Built for creators ↗</span></div></div><div class="reveal"><p class="section-tag">05 / About Premonly</p><h2 class="section-heading" id="aboutHeading">Better business starts with <span class="serif">better clarity.</span></h2><div class="about-paras"><p>Premonly brings together creators interested in monetized YouTube channels, channel transactions and reused-content appeal guidance.</p><p>We want the process to feel less opaque: clearer conversations, better-prepared decisions and support that respects the realities of the creator economy.</p></div><div class="about-quote">“The details matter more than the pitch.”</div><a class="button button-dark" href="mailto:support@premonly.com">Talk to Premonly <span class="arrow">↗</span></a></div></div></section>
+<section class="section faq" id="faq" aria-labelledby="faqHeading"><div class="container"><div class="center reveal"><p class="section-tag">06 / Good questions, clear answers</p><h2 class="section-heading" id="faqHeading">Before you <span class="serif">decide.</span></h2><p class="section-copy">Answers to the questions creators often ask about channels, appeals and the process.</p></div><div class="faq-grid reveal"><div class="faq-column">
+ <details open><summary>What exactly does Premonly do?</summary><div class="answer">Premonly helps creators explore monetized YouTube channels, discuss buying or selling arrangements, and get guidance preparing reused-content monetization appeals.</div></details>
+ <details><summary>Are channels guaranteed to be safe?</summary><div class="answer">No channel or future monetization outcome can be guaranteed. Ask for current channel information, review the relevant terms and perform your own due diligence before any transaction.</div></details>
+ <details><summary>Do you guarantee monetization or appeal approval?</summary><div class="answer">No. Decisions about monetization and appeals are made by YouTube under its policies. Premonly offers preparation and guidance, not a guarantee of a particular result.</div></details>
+ <details><summary>How do buying and selling work?</summary><div class="answer">Start in Discord, describe your requirements, request details about an available opportunity and discuss the payment, ownership and transfer steps before proceeding.</div></details>
+ </div><div class="faq-column">
+ <details open><summary>What if my reused-content appeal is rejected?</summary><div class="answer">You can discuss what happened and whether your materials or approach need improvement. Any further appeal or application depends on YouTube's rules and eligibility requirements.</div></details>
+ <details><summary>How long does delivery take?</summary><div class="answer">Timelines vary with the specific channel, transfer method, verification and both parties' availability. Confirm a realistic timeframe before committing.</div></details>
+ <details><summary>Is there support after a deal?</summary><div class="answer">You can ask about post-transaction guidance before purchasing. The scope and duration of any support should be explicitly confirmed for your deal.</div></details>
+ <details><summary>Can I sell my own monetized channel?</summary><div class="answer">You can contact Premonly to discuss the channel and potential buyers. Any transfer should follow the relevant platform requirements and the terms agreed by both parties.</div></details>
+ </div></div></div></section>
+<section class="closing" id="contact"><div class="container"><div class="cta-card reveal"><p class="section-tag">YOUR NEXT MOVE</p><h2>Don't start with guesswork.<br><span class="serif">Start with a conversation.</span></h2><p>Tell us your goals. We'll help you explore what makes sense for your next move in the creator economy.</p><a class="button button-primary" href="https://discord.gg/sxxYK4DYwJ" target="_blank" rel="noopener noreferrer">Join Premonly on Discord <span class="arrow">↗</span></a></div></div></section>
+</main>
+<footer class="footer"><div class="container"><div class="footer-main"><div class="footer-about"><a class="brand" href="#home"><img class="brand-logo" src="https://i.ibb.co/6JZQNgK9/file-00000000289c720695b514839e99987b.png" width="35" height="35" alt="">Premonly</a><p>Premium YouTube channel opportunities, clearer conversations and appeal support for creators planning what comes next.</p></div><nav class="footer-nav" aria-label="Footer navigation"><a href="#home">Home</a><a href="#services">Services</a><a href="#how">Process</a><a href="#results">Results</a><a href="#testimonials">Testimonials</a><a href="#about">About</a><a href="#faq">FAQ</a><a href="mailto:support@premonly.com">Email us</a><a href="https://discord.gg/sxxYK4DYwJ" target="_blank" rel="noopener noreferrer">Discord ↗</a></nav></div><div class="footer-watermark" aria-hidden="true">Premonly.</div><div class="footer-bottom"><span>© <span id="year"></span> Premonly. All rights reserved.</span><a href="mailto:support@premonly.com">support@premonly.com</a><span>Made for creators, not shortcuts.</span></div></div></footer>
+<a class="floating-discord" href="https://discord.gg/sxxYK4DYwJ" target="_blank" rel="noopener noreferrer" aria-label="Join Premonly Discord"><svg viewBox="0 0 71 55" aria-hidden="true" fill="currentColor"><path d="M60.105 4.898A58.55 58.55 0 0 0 45.653.415a.22.22 0 0 0-.233.11 40.784 40.784 0 0 0-1.8 3.697c-5.456-.817-10.886-.817-16.23 0a37.37 37.37 0 0 0-1.827-3.697.228.228 0 0 0-.233-.11 58.386 58.386 0 0 0-14.452 4.483.207.207 0 0 0-.095.082C1.578 18.73-.944 32.144.293 45.39a.244.244 0 0 0 .093.166c6.073 4.46 11.955 7.167 17.729 8.962a.23.23 0 0 0 .249-.082 42.08 42.08 0 0 0 3.627-5.9.225.225 0 0 0-.123-.312 38.772 38.772 0 0 1-5.539-2.638.228.228 0 0 1-.022-.378c.372-.279.744-.569 1.1-.862a.22.22 0 0 1 .23-.03c11.619 5.304 24.198 5.304 35.68 0a.219.219 0 0 1 .232.027c.356.293.728.586 1.103.865a.228.228 0 0 1-.02.378 36.384 36.384 0 0 1-5.54 2.635.226.226 0 0 0-.121.315 47.249 47.249 0 0 0 3.624 5.897.225.225 0 0 0 .249.084c5.801-1.795 11.684-4.502 17.757-8.961a.228.228 0 0 0 .092-.164c1.48-15.315-2.48-28.618-10.497-40.412a.18.18 0 0 0-.093-.084zM23.725 37.307c-3.497 0-6.381-3.211-6.381-7.156 0-3.944 2.826-7.156 6.381-7.156 3.583 0 6.438 3.24 6.382 7.156 0 3.945-2.826 7.156-6.382 7.156zm23.593 0c-3.498 0-6.382-3.211-6.382-7.156 0-3.944 2.826-7.156 6.382-7.156 3.583 0 6.437 3.24 6.381 7.156 0 3.945-2.798 7.156-6.381 7.156z"/></svg></a>
+<div class="mobile-cta"><a href="https://discord.gg/sxxYK4DYwJ" target="_blank" rel="noopener noreferrer">Join Premonly Discord ↗</a></div>
 <script>
-// ── PHONE SLIDESHOW ──
-(function(){
-  var slides=[
-    "https://i.ibb.co/hJ4Vvf9V/x.jpg",
-    "https://i.ibb.co/5xgr7vZm/x.jpg",
-    "https://i.ibb.co/0phRmQ6k/x.jpg",
-    "https://i.ibb.co/cXhLnv97/x.jpg",
-    "https://i.ibb.co/spx6GKXR/x.jpg"
-  ];
-  var screen=document.getElementById('phoneScreen');
-  var dotsEl=document.getElementById('phoneDots');
-  var cur=0;
-  slides.forEach(function(src,i){
-    var d=document.createElement('div');
-    d.className='phone-slide'+(i===0?' active':'');
-    d.style.backgroundImage='url('+src+')';
-    screen.appendChild(d);
-    var dot=document.createElement('div');
-    dot.className='phone-dot'+(i===0?' active':'');
-    dotsEl.appendChild(dot);
-  });
-  setInterval(function(){
-    var allSlides=screen.querySelectorAll('.phone-slide');
-    var allDots=dotsEl.querySelectorAll('.phone-dot');
-    allSlides[cur].classList.remove('active');
-    allDots[cur].classList.remove('active');
-    cur=(cur+1)%slides.length;
-    allSlides[cur].classList.add('active');
-    allDots[cur].classList.add('active');
-  },3800);
-})();
-
-// ── PROOF SLIDESHOW ──
-(function(){
-  var data=[
-    {img:"https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=1280&h=720&fit=crop&q=85",label:"Creator Growth",title:"From 0 to 128K Subscribers in 60 Days"},
-    {img:"https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1280&h=720&fit=crop&q=85",label:"Revenue Proof",title:"$9,850 Earned — First Month After Purchase"},
-    {img:"https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1280&h=720&fit=crop&q=85",label:"Channel Analytics",title:"1.2M Watch Hours — Verified Studio Data"},
-    {img:"https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=1280&h=720&fit=crop&q=85",label:"Monetization Restored",title:"Appeal Approved — 22% Revenue Growth"},
-    {img:"https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1280&h=720&fit=crop&q=85",label:"Transparent Deals",title:"100% Verified — Clean Ownership Transfer"}
-  ];
-  var container=document.getElementById('proofSlider');
-  var lbl=document.getElementById('proofLbl');
-  var title=document.getElementById('proofTitle');
-  var dotsEl=document.getElementById('proofDots');
-  var cur=0;
-  var slideEls=[];
-  data.forEach(function(s,i){
-    var el=document.createElement('div');
-    el.className='proof-slide'+(i===0?' active':'');
-    el.style.backgroundImage='url('+s.img+')';
-    container.insertBefore(el,container.firstChild);
-    slideEls.push(el);
-    var dot=document.createElement('div');
-    dot.className='proof-dot'+(i===0?' active':'');
-    dot.addEventListener('click',function(){go(i)});
-    dotsEl.appendChild(dot);
-  });
-  lbl.textContent=data[0].label;
-  title.textContent=data[0].title;
-  function go(n){
-    slideEls[cur].classList.remove('active');
-    dotsEl.children[cur].classList.remove('active');
-    cur=n;
-    slideEls[cur].classList.add('active');
-    dotsEl.children[cur].classList.add('active');
-    lbl.textContent=data[cur].label;
-    title.textContent=data[cur].title;
-  }
-  document.getElementById('proofPrev').addEventListener('click',function(){go((cur-1+data.length)%data.length)});
-  document.getElementById('proofNext').addEventListener('click',function(){go((cur+1)%data.length)});
-  setInterval(function(){go((cur+1)%data.length)},4500);
-})();
-
-// ── FAQ ──
-(function(){
-  var faqs=[
-    {q:"What is Premonly?",a:"Premonly is a premium platform for creators to buy and sell monetized YouTube channels safely and transparently."},
-    {q:"Are the channels 100% safe?",a:"Yes, every channel goes through a rigorous manual verification process before being listed on our platform."},
-    {q:"Do you provide monetization guarantee?",a:"We provide high-quality channels that are already monetized. We also offer support if you face reused content issues."},
-    {q:"How does the buying/selling process work?",a:"It's simple: Choose a service or channel, join our Discord, and our team will guide you through the secure transaction."},
-    {q:"What if my reused content appeal is rejected?",a:"Our experts have a high success rate. We'll work closely with you to revise and perfect your appeal strategy."},
-    {q:"How long does channel delivery take?",a:"Most verified channel transfers are completed within 24–72 hours depending on the deal structure."},
-    {q:"Do you offer after-purchase support?",a:"Yes. We continue assisting creators after delivery with setup guidance, security recommendations, and monetization support."},
-    {q:"Can I sell my own monetized channel?",a:"Absolutely. Premonly helps creators securely list and sell verified monetized YouTube channels."}
-  ];
-  var col1=document.getElementById('faqCol1');
-  var col2=document.getElementById('faqCol2');
-  var chevSVG='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>';
-  faqs.forEach(function(f,i){
-    var item=document.createElement('div');
-    item.className='faq-item';
-    item.innerHTML='<div class="faq-hdr"><p class="faq-q">'+f.q+'</p><span class="faq-chev">'+chevSVG+'</span></div><div class="faq-body"><div class="faq-ans">'+f.a+'</div></div>';
-    item.addEventListener('click',function(){
-      var isOpen=item.classList.contains('open');
-      document.querySelectorAll('.faq-item.open').forEach(function(el){el.classList.remove('open')});
-      if(!isOpen) item.classList.add('open');
-    });
-    (i<4?col1:col2).appendChild(item);
-  });
-})();
-
-// ── MOBILE NAV ──
-(function(){
-  var btn=document.getElementById('hamBtn');
-  var menu=document.getElementById('mobMenu');
-  var icon=document.getElementById('hamIcon');
-  var openPath='<path d="M18 6 6 18"/><path d="m6 6 12 12"/>';
-  var closePath='<line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/>';
-  btn.addEventListener('click',function(){
-    var open=menu.classList.toggle('open');
-    icon.innerHTML=open?openPath:closePath;
-  });
-  menu.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click',function(){
-      menu.classList.remove('open');
-      icon.innerHTML=closePath;
-    });
-  });
-})();
-
-// ── FADE IN ON SCROLL ──
-(function(){
-  var els=document.querySelectorAll('.fade');
-  var io=new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}
-    });
-  },{rootMargin:'-80px'});
-  els.forEach(function(el){io.observe(el)});
+(() => {
+ 'use strict';
+ const qs=(s)=>document.querySelector(s),qsa=(s)=>Array.from(document.querySelectorAll(s));
+ qs('#year').textContent=new Date().getFullYear();
+ const menu=qs('#mobileMenu'),toggle=qs('#menuToggle');
+ const closeMenu=()=>{menu.classList.remove('open');toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Open menu');toggle.textContent='☰'};
+ toggle.addEventListener('click',()=>{const open=menu.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'Close menu':'Open menu');toggle.textContent=open?'✕':'☰'});
+ qsa('#mobileMenu a').forEach(a=>a.addEventListener('click',closeMenu));
+ window.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});
+ const motionOK=!window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.08,rootMargin:'0px 0px -30px 0px'});qsa('.reveal').forEach(el=>observer.observe(el))}else qsa('.reveal').forEach(el=>el.classList.add('visible'));
+ let rafPending=false;
+ const updateScroll=()=>{const top=window.scrollY;document.body.classList.toggle('scrolled',top>35);const h=Math.max(1,document.documentElement.scrollHeight-innerHeight);qs('#scrollProgress').style.transform='scaleX('+Math.min(1,top/h)+')';rafPending=false};
+ window.addEventListener('scroll',()=>{if(!rafPending){rafPending=true;requestAnimationFrame(updateScroll)}},{passive:true});updateScroll();
+ const visual=qs('#heroVisual'),scene=qs('#phoneScene');
+ if(motionOK && window.matchMedia('(hover:hover) and (pointer:fine)').matches){visual.addEventListener('pointermove',e=>{const r=visual.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5;const y=(e.clientY-r.top)/r.height-.5;scene.style.transform=`rotate(${(-6+x*8).toFixed(2)}deg) rotateY(${(x*12).toFixed(2)}deg) rotateX(${(-y*10).toFixed(2)}deg) translateY(${(y*8).toFixed(2)}px)`});visual.addEventListener('pointerleave',()=>scene.style.transform='')}
+ const screenshots=qsa('#phoneGallery img');let index=0;
+ if(motionOK && screenshots.length>1){const timer=setInterval(()=>{if(document.hidden)return;screenshots[index].classList.remove('active');index=(index+1)%screenshots.length;screenshots[index].classList.add('active')},4400);window.addEventListener('pagehide',()=>clearInterval(timer),{once:true})}
+ const videoBtn=qs('#loadVideo');videoBtn.addEventListener('click',()=>{const frame=document.createElement('iframe');frame.title='Premonly testimonial video';frame.loading='lazy';frame.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';frame.allowFullscreen=true;frame.referrerPolicy='strict-origin-when-cross-origin';frame.src='https://www.youtube-nocookie.com/embed/-UIgptsQ1xY?autoplay=1&rel=0';videoBtn.textContent='';videoBtn.appendChild(frame);videoBtn.setAttribute('aria-label','Premonly testimonial video playing');videoBtn.disabled=true},{once:true});
+ const links=qsa('#desktopNav a');if('IntersectionObserver' in window){const sectionIO=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.classList.toggle('current',a.getAttribute('href')==='#'+e.target.id))}})},{rootMargin:'-20% 0px -65% 0px'});qsa('main section[id]').forEach(s=>sectionIO.observe(s))}
 })();
 </script>
 </body>
